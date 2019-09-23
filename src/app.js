@@ -11,7 +11,7 @@ const cultoRouter = require('./routes/culto-route');
 
 
 mongoose.connect(
-    'mongodb+srv://manoel:mongodbnosql@cluster0-4lzxg.mongodb.net/test?retryWrites=true&w=majority'
+    'mongodb+srv://manoel:mongodbnosql@mongodb-akelj.mongodb.net/test?retryWrites=true&w=majority'
   );
 
 app.use(bodyParser.json());

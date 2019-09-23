@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("exprorsess");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -14,7 +14,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-app.use(corsOptions);
+app.use(cors(corsOptions));
 
 mongoose.connect(   
     'mongodb+srv://manoel:mongodbnosql@mongodb-akelj.mongodb.net/test?retryWrites=true&w=majority'

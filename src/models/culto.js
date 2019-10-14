@@ -26,7 +26,7 @@ const schema = new Schema({
   },
   urlImagem:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   }
 });

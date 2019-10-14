@@ -14,6 +14,16 @@ const schema = new Schema({
     required: true,
     trim: true
   },
+  dataInicio:{
+    type: String,
+    required: true,
+    trim: true
+  },
+  dataFinal:{
+    type: String,
+    required: true,
+    trim: true
+  },
   dia: {
     type: String,
     required: true,
@@ -23,12 +33,7 @@ const schema = new Schema({
     type: String,
     required: true,
     trim: true
-  },
-  urlImagem:{
-    type: String,
-    required: true,
-    trim: true
   }
 });
 
-module.exports = mongoose.model('culto', schema);
+module.exports = mongoose.model('campanha', schema);

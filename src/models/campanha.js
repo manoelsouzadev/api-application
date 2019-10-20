@@ -33,6 +33,11 @@ const schema = new Schema({
     type: String,
     required: true,
     trim: true
+  },
+  urlImagem:{
+    type: String,
+    //required: true,
+    trim: true
   }
 });
 

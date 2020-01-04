@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const app = express();
-
+const db = require('../config/db');
 const culto = require('./models/culto');
 const campanha = require('./models/campanha');
 
@@ -13,7 +13,7 @@ const cultoRouter = require('./routes/culto-route');
 const campanhaRouter = require('./routes/campanha-route');
 
 mongoose.connect(   
-  'mongodb+srv://manoel:mongodbnosql@mongodb-akelj.mongodb.net/test?retryWrites=true&w=majority'
+  db.mongoURI
   );
 
 app.use(bodyParser.json());

@@ -6,11 +6,13 @@ const app = express();
 const db = require('../config/db');
 const culto = require('./models/culto');
 const campanha = require('./models/campanha');
+const oracao = require('./models/oracao');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
-const cultoRouter = require('./routes/culto-route');
-const campanhaRouter = require('./routes/campanha-route');
+const cultoRoute = require('./routes/culto-route');
+const campanhaRoute = require('./routes/campanha-route');
+const oracaoRoute = require('./routes/oracao-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -27,7 +29,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/', indexRoute);
-app.use('/cultos', cultoRouter);
-app.use('/campanhas', campanhaRouter);
+app.use('/cultos', cultoRoute);
+app.use('/campanhas', campanhaRoute);
+app.use('/oracoes', oracaoRoute);
 
 module.exports = app;

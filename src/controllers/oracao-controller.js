@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Oracao = mongoose.model('oracao');
 
 exports.post = (req, res, next) => {
-  var oracao = new Oracao(req.body);
-  oracao
+  var oracoes = new Oracao(req.body);
+  oracoes 
     .save()
     .then(() => {
       res.status(201).send({

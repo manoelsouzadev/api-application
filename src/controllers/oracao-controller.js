@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Oracao = mongoose.model('oracao');
+const Oracao = mongoose.model('oracoes');
 
 exports.post = (req, res, next) => {
   var oracao = new Oracao(req.body);

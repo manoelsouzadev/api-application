@@ -3,16 +3,20 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const app = express();
-const db = require('../config/db.js');
+const db = require('../config/db');
+
+//carrega models
 const culto = require('./models/culto');
 const campanha = require('./models/campanha');
 const oracao = require('./models/oracao');
+const ensaio = require('./models/ensaio');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
 const cultoRoute = require('./routes/culto-route');
 const campanhaRoute = require('./routes/campanha-route');
 const oracaoRoute = require('./routes/oracao-route');
+const ensaioRoute = require('./routes/ensaio-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -32,5 +36,6 @@ app.use('/', indexRoute);
 app.use('/cultos', cultoRoute);
 app.use('/campanhas', campanhaRoute);
 app.use('/oracoes', oracaoRoute);
+app.use('/ensaios', ensaioRoute);
 
 module.exports = app;

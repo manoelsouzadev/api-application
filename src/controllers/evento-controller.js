@@ -40,6 +40,17 @@ exports.getById = (req, res, next) => {
     });
 };
 
+exports.getByEventType = (req, res, next) => {
+  Evento.find({ tipo: req.params.tipo})
+  .then(data => {
+    res.status(200).send(data);
+  })
+  .catch(e => {
+    res.status(400).send(e);
+  });
+};
+
+
 exports.put = (req, res, next) => {
     Evento.findByIdAndUpdate(req.params.id, {
     $set: {
@@ -48,6 +59,7 @@ exports.put = (req, res, next) => {
       dataInicio: req.body.dataInicio,
       dataFinal: req.body.dataFinal,
       dia: req.body.dia,
+      tipo: req.body.tipo,
       descricao: req.body.descricao,
       urlImagem: req.body.urlImagem
     }

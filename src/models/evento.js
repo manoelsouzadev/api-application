@@ -29,6 +29,11 @@ const schema = new Schema({
     required: true,
     trim: true
   },
+  tipo: {
+    type: String,
+    required: true,
+    trim: true
+  },
   descricao: {
     type: String,
     required: true,

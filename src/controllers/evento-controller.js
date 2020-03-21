@@ -56,6 +56,7 @@ exports.put = (req, res, next) => {
     $set: {
       titulo: req.body.titulo,
       horario: req.body.horario,
+      local: req.body.local,
       dataInicio: req.body.dataInicio,
       dataFinal: req.body.dataFinal,
       dia: req.body.dia,

@@ -14,6 +14,11 @@ const schema = new Schema({
     required: true,
     trim: true
   },
+   local: {
+    type: String,
+    required: true,
+    trim: true
+  },
   dataInicio:{
     type: String,
     required: true,

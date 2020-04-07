@@ -11,6 +11,7 @@ const campanha = require('./models/campanha');
 const oracao = require('./models/oracao');
 const ensaio = require('./models/ensaio');
 const evento = require('./models/evento');
+const lembrete = require('./models/lembrete');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
@@ -19,6 +20,7 @@ const campanhaRoute = require('./routes/campanha-route');
 const oracaoRoute = require('./routes/oracao-route');
 const ensaioRoute = require('./routes/ensaio-route');
 const eventoRoute = require('./routes/evento-route');
+const lembreteRoute = require('./routes/lembrete-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -40,5 +42,6 @@ app.use('/campanhas', campanhaRoute);
 app.use('/oracoes', oracaoRoute);
 app.use('/ensaios', ensaioRoute);
 app.use('/eventos', eventoRoute);
+app.use('/lembretes', lembreteRoute);
 
 module.exports = app;

@@ -43,6 +43,7 @@ exports.getById = (req, res, next) => {
 exports.put = (req, res, next) => {
     Lembrete.findByIdAndUpdate(req.params.id, {
     $set: {
+      titulo: req.body.titulo,
       texto: req.body.texto
     }
   })

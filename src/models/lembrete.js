@@ -8,6 +8,11 @@ const schema = new Schema({
     type: String,
     required: true,
     trim: true
+  },
+   titulo: {
+    type: String,
+    required: true,
+    trim: true
   }
 });
 

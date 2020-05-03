@@ -1,34 +1,39 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
   titulo: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   horario: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   dia: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   descricao: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
-  urlImagem:{
+  urlImagem: {
     type: String,
     //required: true,
-    trim: true
-  }
+    trim: true,
+  },
+  adicional: {
+    type: String,
+    //required: true,
+    trim: true,
+  },
 });
 
-module.exports = mongoose.model('culto', schema);
+module.exports = mongoose.model("culto", schema);

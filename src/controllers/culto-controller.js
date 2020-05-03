@@ -47,7 +47,8 @@ exports.put = (req, res, next) => {
       horario: req.body.horario,
       dia: req.body.dia,
       descricao: req.body.descricao,
-      urlImagem: req.body.urlImagem
+      urlImagem: req.body.urlImagem,
+      adicional: req.body.adicional
     }
   })
     .then(x => {

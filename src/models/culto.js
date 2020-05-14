@@ -41,4 +41,4 @@ const schema = new Schema({
   },
 });
 
-module.exports = mongoose.model("culto", schema);
+module.exports = mongoose.model("Culto", schema);

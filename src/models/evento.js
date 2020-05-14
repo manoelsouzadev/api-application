@@ -51,4 +51,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('evento', schema);
+module.exports = mongoose.model('Evento', schema);

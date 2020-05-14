@@ -16,4 +16,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('lembrete', schema);
+module.exports = mongoose.model('Lembrete', schema);

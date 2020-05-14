@@ -31,4 +31,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('oracoes', schema);
+module.exports = mongoose.model('Oracao', schema);

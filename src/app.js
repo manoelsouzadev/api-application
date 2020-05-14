@@ -6,12 +6,12 @@ const app = express();
 const db = require('../config/db');
 
 //carrega models
-const culto = require('./models/culto');
-const campanha = require('./models/campanha');
-const oracao = require('./models/oracao');
-const ensaio = require('./models/ensaio');
-const evento = require('./models/evento');
-const lembrete = require('./models/lembrete');
+const Culto = require('./models/culto');
+const Campanha = require('./models/campanha');
+const Oracao = require('./models/oracao');
+const Ensaio = require('./models/ensaio');
+const Evento = require('./models/evento');
+const Lembrete = require('./models/lembrete');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');

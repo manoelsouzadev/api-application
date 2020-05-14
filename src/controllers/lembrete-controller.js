@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Lembrete = mongoose.model('lembrete');
+const Lembrete = mongoose.model('Lembrete');
 
 exports.post = (req, res, next) => {
   var lembrete = new Lembrete(req.body);

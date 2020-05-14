@@ -31,4 +31,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('ensaio', schema);
+module.exports = mongoose.model('Ensaio', schema);

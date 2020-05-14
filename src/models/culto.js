@@ -9,7 +9,12 @@ const schema = new Schema({
     required: true,
     trim: true,
   },
-  horario: {
+  horarioInicio: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  horarioTermino: {
     type: String,
     required: true,
     trim: true,

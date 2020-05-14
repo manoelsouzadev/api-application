@@ -6,7 +6,7 @@ const app = express();
 const db = require('../config/db');
 
 //carrega models
-//const Culto = require('./models/culto');
+const Culto = require('./models/culto');
 const campanha = require('./models/campanha');
 const oracao = require('./models/oracao');
 const ensaio = require('./models/ensaio');

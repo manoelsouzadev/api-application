@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Culto = mongoose.model('culto');
+const Culto = mongoose.model('Culto');
 
 exports.post = (req, res, next) => {
   var culto = new Culto(req.body);
@@ -44,7 +44,8 @@ exports.put = (req, res, next) => {
   Culto.findByIdAndUpdate(req.params.id, {
     $set: {
       titulo: req.body.titulo,
-      horario: req.body.horario,
+      horarioInicio: req.body.horarioInicio,
+      horarioTermino: req.body.horarioTermino,
       dia: req.body.dia,
       descricao: req.body.descricao,
       urlImagem: req.body.urlImagem,

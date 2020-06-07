@@ -9,7 +9,12 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  horario: {
+  horarioInicio: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  horarioTermino: {
     type: String,
     required: true,
     trim: true
@@ -27,6 +32,10 @@ const schema = new Schema({
   urlImagem:{
     type: String,
     //required: true,
+    trim: true
+  },
+  adicional:{
+    type: String,
     trim: true
   }
 });

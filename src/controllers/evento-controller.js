@@ -55,14 +55,16 @@ exports.put = (req, res, next) => {
     Evento.findByIdAndUpdate(req.params.id, {
     $set: {
       titulo: req.body.titulo,
-      horario: req.body.horario,
+      horarioInicio: req.body.horarioInicio,
+      horarioTermino: req.body.horarioTermino,
       local: req.body.local,
       dataInicio: req.body.dataInicio,
       dataFinal: req.body.dataFinal,
       dia: req.body.dia,
       tipo: req.body.tipo,
       descricao: req.body.descricao,
-      urlImagem: req.body.urlImagem
+      urlImagem: req.body.urlImagem,
+      adicional: req.body.adicional
     }
   })
     .then(x => {

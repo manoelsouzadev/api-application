@@ -44,12 +44,14 @@ exports.put = (req, res, next) => {
     Campanha.findByIdAndUpdate(req.params.id, {
     $set: {
       titulo: req.body.titulo,
-      horario: req.body.horario,
+      horarioInicio: req.body.horarioInicio,
+      horarioTermino: req.body.horarioTermino,
       dataInicio: req.body.dataInicio,
       dataFinal: req.body.dataFinal,
       dia: req.body.dia,
       descricao: req.body.descricao,
-      urlImagem: req.body.urlImagem
+      urlImagem: req.body.urlImagem,
+      adicional: req.body.adicional
     }
   })
     .then(x => {

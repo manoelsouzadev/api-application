@@ -1,27 +1,27 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const Playlist = mongoose.model("Playlist");
+const Canal = mongoose.model("Canal");
 
 exports.post = (req, res, next) => {
-  var playlist = new Playlist(req.body);
-  playlist
+  var canal = new Canal(req.body);
+  canal
     .save()
     .then(() => {
       res.status(201).send({
-        message: "Playlist cadastrada com sucesso!",
+        message: "Canal cadastrado com sucesso!",
       });
     })
     .catch((e) => {
       res.status(400).send({
-        message: "Falha ao cadastrar a Playlist",
+        message: "Falha ao cadastrar o canal",
         data: e,
       });
     });
 };
 
 exports.get = (req, res, next) => {
-  Playlist.find()
+  Canal.find()
     .then((data) => {
       res.status(200).send(data);
     })
@@ -31,7 +31,7 @@ exports.get = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-  Playlist.findById(req.params.id)
+  Canal.findById(req.params.id)
     .then((data) => {
       res.status(200).send(data);
     })
@@ -41,31 +41,31 @@ exports.getById = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
-  Playlist.findByIdAndUpdate(req.params.id, {
+  Canal.findByIdAndUpdate(req.params.id, {
     $set: {
-      idPlaylist: req.body.idPlaylist,
+      idCanal: req.body.idPlaylist,
       nome: req.body.nome
     },
   })
     .then((x) => {
-      res.status(200).send({ message: "Playlist atualizada com sucesso!" });
+      res.status(200).send({ message: "Canal atualizado com sucesso!" });
     })
     .catch((e) => {
       res.status(400).send({
-        message: "Falha ao atualizar a playlist",
+        message: "Falha ao atualizar o canal",
         data: e,
       });
     });
 };
 
 exports.delete = (req, res, next) => {
-  Playlist.findByIdAndRemove(req.params.id)
+  Canal.findByIdAndRemove(req.params.id)
     .then((x) => {
-      res.status(200).send({ message: "Playlist removida com sucesso!" });
+      res.status(200).send({ message: "Canal removido com sucesso!" });
     })
     .catch((e) => {
       res.status(400).send({
-        message: "Falha ao remover playlist",
+        message: "Falha ao remover canal",
         data: e,
       });
     });

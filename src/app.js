@@ -15,7 +15,7 @@ const Lembrete = require('./models/lembrete');
 const Aniversario = require('./models/aniversario');
 const Categoria = require('./models/categoria');
 const Publicacao = require('./models/publicacao');
-const Playlist = require('./models/playlist');
+const Canal = require('./models/canal');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
@@ -28,7 +28,7 @@ const lembreteRoute = require('./routes/lembrete-route');
 const aniversarioRoute = require('./routes/aniversario-route');
 const categoriaRoute = require('./routes/categoria-route');
 const publicacaoRoute = require('./routes/publicacao-route');
-const playlistRoute = require('./routes/playlist-route');
+const CanalRoute = require('./routes/canal-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -54,6 +54,6 @@ app.use('/lembretes', lembreteRoute);
 app.use('/aniversarios', aniversarioRoute);
 app.use('/categorias', categoriaRoute);
 app.use('/publicacoes', publicacaoRoute);
-app.use('/playlists', playlistRoute);
+app.use('/canais', CanalRoute);
 
 module.exports = app;

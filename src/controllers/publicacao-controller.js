@@ -60,7 +60,8 @@ exports.put = (req, res, next) => {
       textoSemFormatacao: req.body.textoSemFormatacao,
       categoria: req.body.categoria,
       data: req.body.data,
-      urlVideo: req.body.urlVideo
+      urlVideo: req.body.urlVideo,
+      categoriaVideo: req.body.categoriaVideo
     }
   })
     .then(x => {

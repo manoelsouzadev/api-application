@@ -34,6 +34,10 @@ const schema = new Schema({
   },
   urlVideo: {
     type: String
+  },
+  categoriaVideo: {
+	type: String,
+    required: true,
   }
 });
 

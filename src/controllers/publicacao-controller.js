@@ -59,7 +59,8 @@ exports.put = (req, res, next) => {
       texto: req.body.texto,
       textoSemFormatacao: req.body.textoSemFormatacao,
       categoria: req.body.categoria,
-      data: req.body.data
+      data: req.body.data,
+      urlVideo: req.body.urlVideo
     }
   })
     .then(x => {

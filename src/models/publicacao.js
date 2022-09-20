@@ -19,6 +19,10 @@ const schema = new Schema({
 		type: String, 
 		required: true
 	}, 
+	textoSemFormatacao:{
+		type: String, 
+		required: true
+	}, 
 	categoria:{
 		type: Schema.Types.ObjectId,
 		ref: 'Publicacao',

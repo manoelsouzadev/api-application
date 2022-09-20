@@ -57,6 +57,7 @@ exports.put = (req, res, next) => {
       slug: req.body.slug,
       descricao: req.body.descricao,
       texto: req.body.texto,
+      textoSemFormatacao: req.body.textoSemFormatacao,
       categoria: req.body.categoria,
       data: req.body.data
     }

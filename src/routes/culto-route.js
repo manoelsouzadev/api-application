@@ -49,6 +49,7 @@ router.get('/:id', cultoController.getById);
  * Esta rota altera um culto
  * @route PUT /cultos/{id}
  * @group cultos - Operações relacionadas aos cultos
+ * * @param {Culto.model} culto.body.required - Atualizar culto
  * @param {string} id.path.required 
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error

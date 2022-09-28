@@ -31,7 +31,7 @@ morganBody(app, {
 let options = {
     swaggerDefinition: {
         info: {
-            description: 'This is a sample server',
+            description: 'Este documentação é referente a api principal da api do aplicativo de igreja',
             title: 'Swagger',
             version: '1.0.0',
         },
@@ -41,14 +41,14 @@ let options = {
             "application/json",
         ],
         schemes: ['http', 'https'],
-        securityDefinitions: {
-            JWT: {
-                type: 'apiKey',
-                in: 'header',
-                name: 'Authorization',
-                description: "",
-            }
-        }
+        // securityDefinitions: {
+        //     JWT: {
+        //         type: 'apiKey',
+        //         in: 'header',
+        //         name: 'Authorization',
+        //         description: "",
+        //     }
+        // }
     },
     basedir: __dirname, //app absolute path
     files: ['./routes/*.js'] //Path to the API handle folder

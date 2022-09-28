@@ -50,7 +50,8 @@ const publicacaoRoute = require('./routes/publicacao-route');
 const CanalRoute = require('./routes/canal-route');
 
 mongoose.connect(   
-  db.mongoURI
+  //db.mongoURI
+  process.env.MONGO_URL
   );
 
 app.use(bodyParser.json());

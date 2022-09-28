@@ -35,7 +35,7 @@ let options = {
             title: 'Swagger',
             version: '1.0.0',
         },
-        host: 'localhost:' + process.env.PORT,
+        host: '186.202.57.75:' + process.env.PORT,
         basePath: '/',
         produces: [
             "application/json",

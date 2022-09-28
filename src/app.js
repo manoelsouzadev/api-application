@@ -8,6 +8,7 @@ const app = express();
 const db = require('../config/db');
 const fs = require('fs');
 const path = require('path');
+const expressSwagger = require('express-swagger-generator')(app);
 
 morganBody(app);
 
@@ -23,6 +24,35 @@ morganBody(app, {
   noColors: true,
   stream: log,
 });
+
+
+
+
+let options = {
+    swaggerDefinition: {
+        info: {
+            description: 'This is a sample server',
+            title: 'Swagger',
+            version: '1.0.0',
+        },
+        host: 'https://localhost:' + process.env.PORT,
+        basePath: '/',
+        produces: [
+            "application/json",
+        ],
+        schemes: ['http', 'https'],
+        securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: "",
+            }
+        }
+    },
+    basedir: __dirname, //app absolute path
+    files: ['./routes/*.js'] //Path to the API handle folder
+};
 
 //carrega models
 const Culto = require('./models/culto');
@@ -50,8 +80,8 @@ const publicacaoRoute = require('./routes/publicacao-route');
 const CanalRoute = require('./routes/canal-route');
 
 mongoose.connect(   
-  //db.mongoURI
-  process.env.MONGO_URL
+  db.mongoURI
+  //process.env.MONGO_URL
   );
 
 app.use(bodyParser.json());
@@ -75,5 +105,7 @@ app.use('/aniversarios', aniversarioRoute);
 app.use('/categorias', categoriaRoute);
 app.use('/publicacoes', publicacaoRoute);
 app.use('/canais', CanalRoute);
+
+expressSwagger(options);
 
 module.exports = app;

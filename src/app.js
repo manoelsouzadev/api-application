@@ -35,7 +35,7 @@ let options = {
             title: 'Swagger',
             version: '1.0.0',
         },
-        host: "https://api-igreja-principal.jamb-devs.tech/",
+        host: "api-igreja-principal.jamb-devs.tech",
         basePath: '/',
         produces: [
             "application/json",
@@ -80,8 +80,8 @@ const publicacaoRoute = require('./routes/publicacao-route');
 const CanalRoute = require('./routes/canal-route');
 
 mongoose.connect(   
-  db.mongoURI
-  //process.env.MONGO_URL
+  //db.mongoURI
+    process.env.MONGO_URL
   );
 
 app.use(bodyParser.json());

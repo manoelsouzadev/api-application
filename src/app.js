@@ -8,6 +8,7 @@ const app = express();
 const dns = require('dns');
 const os = require('os');
 const db = require('../config/db');
+const environment = require('../config/environment');
 const fs = require('fs');
 const path = require('path');
 const expressSwagger = require('express-swagger-generator')(app);
@@ -27,12 +28,6 @@ morganBody(app, {
   stream: log,
 });
 
-let ip;
-
-dns.lookup(os.hostname(), function (err, add, fam) {
-   ip = add;
-})
-
 let options = {
     swaggerDefinition: {
         info: {
@@ -40,7 +35,7 @@ let options = {
             title: 'Swagger',
             version: '1.0.0',
         },
-        host: ip + ':' + process.env.PORT,
+        host: environment.PRODUCTION + ':' + process.env.PORT,
         basePath: '/',
         produces: [
             "application/json",

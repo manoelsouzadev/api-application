@@ -1,9 +1,28 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const morganBody = require('morgan-body');
 const mongoose = require('mongoose');
 const cors = require("cors");
+const moment = require("moment");
 const app = express();
 const db = require('../config/db');
+const fs = require('fs');
+const path = require('path');
+
+morganBody(app);
+
+const log = fs.createWriteStream(
+  path.join("./logs", `express${moment().format('YYYY-MM-DD')}.log`), { flags: "a" }
+);
+
+log.on('error', function (err) {
+  console.log("erro");
+});
+
+morganBody(app, {
+  noColors: true,
+  stream: log,
+});
 
 //carrega models
 const Culto = require('./models/culto');

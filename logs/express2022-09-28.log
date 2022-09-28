@@ -1,0 +1,99 @@
+
+Request: GET /cultos at Wed Sep 28 2022 13:13:11 GMT-0300, IP: ::1, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Response Body:
+[
+	{
+		"_id": "60822b07f1995c5b38ea4c43",
+		"titulo": "oi",
+		"horarioInicio": "00:02",
+		"horarioTermino": "00:30",
+		"dia": "Sexta-feira",
+		"descricao": "teste",
+		"urlImagem": "",
+		"adicional": "",
+		"__v": 0
+	},
+	{
+		"_id": "60cfa57c10bb290017f5a113",
+		"titulo": "Teste",
+		"horarioInicio": "12:30",
+		"horarioTermino": "17:30",
+		"dia": "Quarta-feira",
+		"descricao": "teste",
+		"urlImagem": "https://firebasestorage.googleapis.com/v0/b/appesperantista.appspot.com/o/imagens-culto%2Fe32430c6-14b6-ccbb-087b-15df90733534.jpg?alt=media&token=548e287b-c711-4eb7-9f64-d59623346c1f",
+		"adicional": "teste",
+		"__v": 0
+	},
+	{
+		"_id": "60e106c4cea5da00170aaff6",
+		"titulo": "1",
+		"horarioInicio": "21:53",
+		"horarioTermino": "21:53",
+		"dia": "Domingo",
+		"descricao": "teste",
+		"urlImagem": "",
+		"adicional": "teste",
+		"__v": 0
+	},
+	{
+		"_id": "60e10727cea5da00170aaff7",
+		"titulo": "23",
+		"horarioInicio": "21:55",
+		"horarioTermino": "03:19",
+		"dia": "Quinta-feira",
+		"descricao": "te
+...
+Response: 200 176.039 ms 
+
+Request: GET /favicon.ico at Wed Sep 28 2022 13:13:11 GMT-0300, IP: ::1, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Response: 404 1.450 ms 
+
+Request: GET /campanhas at Wed Sep 28 2022 13:13:30 GMT-0300, IP: ::1, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Response Body:
+[
+	{
+		"_id": "5eddbe582492c70017daa5ba",
+		"titulo": "teste",
+		"horarioInicio": "01:56",
+		"horarioTermino": "01:59",
+		"dataInicio": "2020-06-08",
+		"dataFinal": "2020-06-12",
+		"dia": "Segunda-feira,Terça-feira",
+		"descricao": "teste",
+		"urlImagem": "",
+		"adicional": "wewewewewew",
+		"__v": 0
+	},
+	{
+		"_id": "5ee1388ed1be38001708ffe1",
+		"titulo": "teste",
+		"horarioInicio": "16:46",
+		"horarioTermino": "16:46",
+		"dataInicio": "2020-06-10",
+		"dataFinal": "2020-06-10",
+		"dia": "Segunda-feira,Quarta-feira",
+		"descricao": "teste",
+		"urlImagem": "",
+		"adicional": "fggy",
+		"__v": 0
+	},
+	{
+		"_id": "60822998f1995c5b38ea4c42",
+		"titulo": "campanha",
+		"horarioInicio": "12:20",
+		"horarioTermino": "23:00",
+		"dataInicio": "2021-04-22",
+		"dataFinal": "2021-04-22",
+		"dia": "Quarta-feira,Quinta-feira",
+		"descricao": "teste",
+		"urlImagem": "",
+		"adicional": "",
+		"__v": 0
+	},
+	{
+		"_id": "60e1076fcea5da00170aaff8",
+		"titulo": "12",
+		"horarioInicio": "19:56",
+		"horarioTermino
+...
+Response: 200 160.604 ms 

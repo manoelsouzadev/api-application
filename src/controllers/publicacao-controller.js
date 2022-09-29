@@ -61,7 +61,8 @@ exports.put = (req, res, next) => {
       categoria: req.body.categoria,
       data: req.body.data,
       urlVideo: req.body.urlVideo,
-      categoriaVideo: req.body.categoriaVideo
+      categoriaVideo: req.body.categoriaVideo,
+      idTransmissaoAoVivo: req.body.idTransmissaoAoVivo
     }
   })
     .then(x => {

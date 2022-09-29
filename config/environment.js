@@ -1,5 +1,5 @@
 const environment = {
-    PRODUCTION: "186.202.57.75",
+    PRODUCTION: "api-igreja-principal.jamb-devs.tech",
     DEVELOPMENT: "localhost"
 }
 

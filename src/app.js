@@ -35,7 +35,7 @@ let options = {
             title: 'Swagger',
             version: '1.0.0',
         },
-        host: "api-igreja-principal.jamb-devs.tech",
+        host: environment.PRODUCTION,
         basePath: '/',
         produces: [
             "application/json",

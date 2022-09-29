@@ -38,6 +38,9 @@ const schema = new Schema({
   categoriaVideo: {
 	type: String,
     required: true,
+  },
+  idTransmissaoAoVivo: {
+    type: String
   }
 });
 

@@ -43,7 +43,7 @@ exports.getById = (req, res, next) => {
 exports.put = (req, res, next) => {
   Canal.findByIdAndUpdate(req.params.id, {
     $set: {
-      idCanal: req.body.idPlaylist,
+      idCanal: req.body.idCanal,
       nome: req.body.nome
     },
   })

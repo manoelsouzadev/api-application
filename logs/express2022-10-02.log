@@ -1,0 +1,102 @@
+
+Request: POST /usuarios/ at Sun Oct 02 2022 00:00:51 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"username": "teste 4",
+	"password": "12345678dddghghgh",
+	"roles": [
+		"usuario_externo"
+	]
+}
+Response Body:
+{
+	"message": "Usuário cadastrado com sucesso!"
+}
+Response: 201 270.593 ms 
+
+Request: POST /usuarios/autenticar at Sun Oct 02 2022 00:01:00 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"username": "teste 4",
+	"password": "12345678dddghghgh"
+}
+Response Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM",
+	"data": {
+		"username": "teste 4"
+	}
+}
+Response: 201 203.232 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:16 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 1.507 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:17 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 0.853 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:18 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 0.616 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:18 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 0.619 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:18 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 0.607 ms 
+
+Request: POST /usuarios/verify-token at Sun Oct 02 2022 00:01:19 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.29.2
+Request Body:
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzhmZWUyY2IwNGZjNWE1MDI4OTYxNSIsInVzZXJuYW1lIjoidGVzdGUgNCIsInJvbGVzIjpbInVzdWFyaW9fZXh0ZXJubyJdLCJpYXQiOjE2NjQ2Nzk2NjAsImV4cCI6MTY2NDc2NjA2MH0.hydjYDtOaYvFnd3BfU7mjfbMp54xIw876BFeyE1IvEM"
+}
+Response Body:
+{
+	"mensagem": "Token válido",
+	"situacao": 1
+}
+Response: 200 0.596 ms 

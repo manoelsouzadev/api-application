@@ -67,6 +67,7 @@ const Categoria = require('./models/categoria');
 const Publicacao = require('./models/publicacao');
 const Canal = require('./models/canal');
 const Usuario = require('./models/usuario');
+const Anotacao = require('./models/anotacao');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
@@ -81,6 +82,7 @@ const categoriaRoute = require('./routes/categoria-route');
 const publicacaoRoute = require('./routes/publicacao-route');
 const canalRoute = require('./routes/canal-route');
 const usuarioRoute = require('./routes/usuario-route');
+const anotacaoRoute = require('./routes/anotacao-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -109,6 +111,7 @@ app.use('/categorias', categoriaRoute);
 app.use('/publicacoes', publicacaoRoute);
 app.use('/canais', canalRoute);
 app.use('/usuarios', usuarioRoute);
+app.use('/anotacoes', anotacaoRoute);
 
 expressSwagger(options);
 

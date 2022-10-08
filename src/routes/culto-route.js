@@ -17,7 +17,7 @@ const router = express.Router();
 */
 
 /**
- * Esta rota cria um novo culto
+ * Este endpoint cria um novo culto
  * @route POST /cultos
  * @group cultos - Operações relacionadas aos cultos
  * @param {Culto.model} culto.body.required - Criar novo culto
@@ -27,7 +27,7 @@ const router = express.Router();
 router.post('/', cultoController.post);
 
 /**
- * Esta rota busca todos os cultos
+ * Este endpoint busca todos os cultos
  * @route GET /cultos
  * @group cultos - Operações relacionadas aos cultos
  * @returns {Array.<Culto>} 200 - Um array de cultos
@@ -36,7 +36,7 @@ router.post('/', cultoController.post);
 router.get('/', cultoController.get);
 
 /**
- * Esta rota busca um culto por id
+ * Este endpoint busca um culto por id
  * @route GET /cultos/{id}
  * @group cultos - Operações relacionadas aos cultos
  * @param {string} id.path.required
@@ -46,7 +46,7 @@ router.get('/', cultoController.get);
 router.get('/:id', cultoController.getById);
 
 /**
- * Esta rota altera um culto
+ * Este endpoint altera um culto
  * @route PUT /cultos/{id}
  * @group cultos - Operações relacionadas aos cultos
  * @param {Culto.model} culto.body.required - Atualizar culto
@@ -57,7 +57,7 @@ router.get('/:id', cultoController.getById);
 router.put('/:id', cultoController.put);
 
 /**
- * Esta rota deleta um culto
+ * Este endpoint deleta um culto
  * @route DELETE /cultos/{id}
  * @param {string} id.path.required
  * @group cultos - Operações relacionadas aos cultos

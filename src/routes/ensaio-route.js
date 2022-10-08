@@ -5,10 +5,65 @@ const ensaioController = require('../controllers/ensaio-controller');
 
 const router = express.Router();
 
+/**
+ * @typedef Ensaio
+ * @property {string} titulo.required
+ * @property {string} horarioInicio.required 
+ * @property {string} horarioTermino.required
+ * @property {string} dia.required
+ * @property {string} descricao.required
+ * @property {string} urlImagem
+ * @property {string} adicional
+*/
+
+/**
+ * Este endpoint cria um novo ensaio
+ * @route POST /ensaios
+ * @group ensaios - Operações relacionadas aos ensaios
+ * @param {Ensaio.model} ensaio.body.required - Criar novo ensaio
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 router.post('/', ensaioController.post);
+
+/**
+ * Este endpoint busca todos os ensaios
+ * @route GET /ensaios
+ * @group ensaios - Operações relacionadas aos ensaios
+ * @returns {Array.<Ensaio>} 200 - Um array de ensaios
+ * @returns {Error}  default - Unexpected error
+ */
 router.get('/', ensaioController.get);
+
+/**
+ * Este endpoint busca um ensaio por id
+ * @route GET /ensaios/{id}
+ * @group ensaios - Operações relacionadas aos ensaios
+ * @param {string} id.path.required
+ * @returns {Object} 200 - Um model de ensaio
+ * @returns {Error}  default - Unexpected error
+ */
 router.get('/:id', ensaioController.getById);
+
+/**
+ * Este endpoint altera um ensaio
+ * @route PUT /ensaios/{id}
+ * @group ensaios - Operações relacionadas aos ensaios
+ * @param {Ensaio.model} ensaio.body.required - Atualizar ensaio
+ * @param {string} id.path.required 
+ * @returns {Object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 router.put('/:id', ensaioController.put);
+
+/**
+ * Este endpoint deleta um ensaio
+ * @route DELETE /ensaios/{id}
+ * @param {string} id.path.required
+ * @group ensaios - Operações relacionadas aos ensaios
+ * @returns {Object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 router.delete('/:id', ensaioController.delete);
 
 module.exports = router;

@@ -88,8 +88,8 @@ const anotacaoRoute = require('./routes/anotacao-route');
 const conversaRoute = require('./routes/conversa-route');
 
 mongoose.connect(   
-  db.mongoURI
-    //process.env.MONGO_URL
+  //db.mongoURI
+  process.env.MONGO_URL
   );
 
 app.use(bodyParser.json());

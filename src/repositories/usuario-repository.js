@@ -16,8 +16,11 @@ exports.authenticate = async data => {
 };
 
 exports.getById = async id => {
-  const res = await Usuario.findById(id);
-  return res;
+  return await Usuario.findById(id);
+};
+
+exports.get = async (req, res, next)  => {
+  return await Usuario.find();
 };
 
 exports.put = async (id, data) => {

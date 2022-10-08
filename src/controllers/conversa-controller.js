@@ -1,0 +1,69 @@
+"use strict";
+
+const repository = require("../repositories/conversa-repository");
+
+exports.post = async (req, res, next) => {
+
+  try {
+    await repository.create({
+      idConversa: req.body.idConversa,
+      idUsuario: req.body.idUsuario,
+      nomeUsuario: req.body.nomeUsuario,
+      mensagem: req.body.mensagem,
+      dataMensagem: req.body.dataMensagem
+    });
+
+    // emailService.send(
+    //   'manoel.souza280@gmail.com',
+    //   'Bem vindo ao node store',
+    //   global.EMAIL_TMPL.replace('{0}', req.body.name)
+    // );
+
+    res.status(201).send({
+      message: "Conversa cadastrada com sucesso!",
+    });
+  } catch (e) {
+    console.log("error", e);
+    res.status(500).send({
+      message: "Falha ao processar sua requisição",
+    });
+  }
+};
+
+exports.getByIdConversa = async (req, res, next) => {
+  console.log("param",req.params.idConversa)
+  try {
+    const data = await repository.getByIdConversa(req.params.idConversa);
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: "Falha ao processar sua requisição",
+    });
+  }
+};
+
+exports.put = async (req, res, next) => {
+  try {
+    await repository.put(req.params.id, req.body);
+    res.status(200).send({ message: "Conversa atualizada com sucesso!" });
+  } catch (e) {
+    console.log("e put", e)
+    res.status(500).send({
+      message: "Falha ao processar sua requisição",
+    });
+  }
+};
+
+exports.delete = async (req, res, next) => {
+  try {
+    await repository.delete(req.params.id);
+    res.status(200).send({ message: "Mensagem removida com sucesso!" });
+  } catch (e) {
+    console.log(e)
+    res.status(400).send({
+      message: "Falha ao remover mensagem",
+      data: e,
+    });
+  }
+};
+

@@ -13,10 +13,10 @@ const schema = new Schema({
     required: true
   },
   roles: [{
-    type: String,
+    type: [String],
     required: true,
     enum: ['usuario_interno', 'usuario_externo', 'admin'],
-    default: 'usuario externo'
+    default: 'usuario_externo'
   }]
 });
 

@@ -8,9 +8,11 @@ exports.create = async data => {
 };
 
 exports.authenticate = async data => {
+  console.log("data", data)
   const res = await Usuario.findOne({
     username: data.username,
-    password: data.password
+    password: data.password,
+    roles: data.roles
   });
   return res;
 };
@@ -26,6 +28,7 @@ exports.get = async (req, res, next)  => {
 exports.put = async (id, data) => {
   Usuario.findByIdAndUpdate(id, {
     $set: {
+      username: data.username,
       password: data.password,
       roles: data.roles,
     }

@@ -7,8 +7,8 @@ const authService = require('../services/auth-service');
 
 router.post('/', usuarioController.post);
 router.post('/autenticar', usuarioController.authenticate);
-router.post('/refresh-token', authService.authorize, usuarioController.refreshToken);
-router.post('/verify-token', authService.authorize, usuarioController.verifyToken);
+router.post('/refresh-token', usuarioController.refreshToken);
+router.post('/verify-token', usuarioController.verifyToken);
 router.get('/:id', usuarioController.getById);
 router.get('/', usuarioController.get);
 router.put('/:id', usuarioController.put);

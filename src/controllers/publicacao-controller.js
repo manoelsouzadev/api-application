@@ -51,6 +51,7 @@ exports.getById = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
+  console.log(req.body)
     Publicacao.findByIdAndUpdate(req.params.id, {
     $set: {
       titulo: req.body.titulo,
@@ -62,7 +63,8 @@ exports.put = (req, res, next) => {
       data: req.body.data,
       urlVideo: req.body.urlVideo,
       categoriaVideo: req.body.categoriaVideo,
-      idTransmissaoAoVivo: req.body.idTransmissaoAoVivo
+      idTransmissaoAoVivo: req.body.idTransmissaoAoVivo,
+      idUsuarioCriador: req.body.idUsuarioCriador
     }
   })
     .then(x => {

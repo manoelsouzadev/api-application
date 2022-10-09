@@ -63,8 +63,9 @@ exports.isAdmin = function(req, res, next){
 };
 
 exports.verifyToken = async (res,token) => {
-  
-  if (!token) {
+  console.log("token", token)
+  if (token == null) {
+    console.log("error token final 2", error)
     res.status(401).json({
       mensagem: 'Token Inválido',
       situacao: 0
@@ -72,6 +73,7 @@ exports.verifyToken = async (res,token) => {
   } else {
     jwt.verify(token, global.SALT_KEY, function(error, decoded) {
       if (error) {
+        console.log("error token final", error)
         res.status(401).json({
           mensagem: 'Token Inválido',
           situacao: 0

@@ -33,15 +33,19 @@ const schema = new Schema({
     default: Date.now(),
   },
   urlVideo: {
-    type: String
+    type: String,
   },
   categoriaVideo: {
-	type: String,
+    type: String,
     required: true,
   },
   idTransmissaoAoVivo: {
-    type: String
-  }
+    type: String,
+  },
+  idUsuarioCriador: {
+    type: String,
+    //required: true
+  },
 });
 
 mongoose.model("Publicacao", schema);

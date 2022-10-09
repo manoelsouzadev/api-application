@@ -50,10 +50,11 @@ exports.post = async (req, res, next) => {
 
 exports.authenticate = async (req, res, next) => {
   try {
-    console.log("gs", global.SALT_KEY);
+    console.log("req.body.roles", req.body.roles);
     const usuario = await repository.authenticate({
       username: req.body.username,
       password: md5(req.body.password + global.SALT_KEY),
+      roles: req.body.roles
     });
 
     console.log("usuario", usuario);
@@ -70,10 +71,11 @@ exports.authenticate = async (req, res, next) => {
       roles: usuario.roles,
     });
 
-    res.status(201).send({
+    res.status(200).send({
       token: token,
       data: {
         username: usuario.username,
+        roles: usuario.roles
       },
     });
   } catch (e) {

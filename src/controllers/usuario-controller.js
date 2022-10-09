@@ -75,7 +75,7 @@ exports.authenticate = async (req, res, next) => {
       token: token,
       data: {
         username: usuario.username,
-        roles: usuario.roles
+        roles: [req.body.roles]
       },
     });
   } catch (e) {

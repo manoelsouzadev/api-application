@@ -74,6 +74,7 @@ exports.authenticate = async (req, res, next) => {
     res.status(200).send({
       token: token,
       data: {
+        id: usuario.id,
         username: usuario.username,
         roles: [req.body.roles]
       },

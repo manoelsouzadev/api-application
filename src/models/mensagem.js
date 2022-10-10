@@ -12,6 +12,9 @@ const schema = new Schema({
     type: String,
     required: true,
   },
+  idUsuarioReceptor: {
+    type: String,
+  },
   nomeUsuario: {
     type: String,
     required: true,

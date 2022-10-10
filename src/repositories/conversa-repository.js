@@ -12,10 +12,14 @@ exports.getByIdRoom = async (room) => {
 };
 
 exports.put = async (id, data) => {
+
+  const { idUsuarioReceptor } = data;
+
   Mensagem.findByIdAndUpdate(id, {
     $set: {
       room: data.room,
       idUsuario: data.idUsuario,
+      idUsuarioReceptor: idUsuarioReceptor ? idUsuarioReceptor : null,
       nomeUsuario: data.nomeUsuario,
       mensagem: data.mensagem,
       dataMensagem: data.dataMensagem

@@ -4,13 +4,13 @@ const repository = require("../repositories/conversa-repository");
 
 exports.post = async (req, res, next) => {
 
-  const { idUsuarioReceptor } = data;
+  const { idUsuarioAtendimento } = data;
 
   try {
     await repository.create({
       room: req.body.room,
       idUsuario: req.body.idUsuario,
-      idUsuarioReceptor: idUsuarioReceptor ? idUsuarioReceptor : null,
+      idUsuarioReceptor: idUsuarioAtendimento ? idUsuarioAtendimento : null,
       nomeUsuario: req.body.nomeUsuario,
       mensagem: req.body.mensagem,
       dataMensagem: req.body.dataMensagem

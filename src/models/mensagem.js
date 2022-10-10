@@ -12,7 +12,7 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  idUsuarioReceptor: {
+  idUsuarioAtendimento: {
     type: String,
   },
   nomeUsuario: {

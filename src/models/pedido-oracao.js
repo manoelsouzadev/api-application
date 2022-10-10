@@ -17,8 +17,7 @@ const schema = new Schema({
     required: true,
   },
   idUsuarioAtendimento:{
-    type: String,
-    required: true,
+    type: String
   },
   data: {
     type: String,

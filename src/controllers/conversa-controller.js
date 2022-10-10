@@ -6,7 +6,7 @@ exports.post = async (req, res, next) => {
 
   try {
     await repository.create({
-      idConversa: req.body.idConversa,
+      room: req.body.room,
       idUsuario: req.body.idUsuario,
       nomeUsuario: req.body.nomeUsuario,
       mensagem: req.body.mensagem,
@@ -30,10 +30,10 @@ exports.post = async (req, res, next) => {
   }
 };
 
-exports.getByIdConversa = async (req, res, next) => {
-  console.log("param",req.params.idConversa)
+exports.getByIdRoom = async (req, res, next) => {
+  console.log("param",req.params.room)
   try {
-    const data = await repository.getByIdConversa(req.params.idConversa);
+    const data = await repository.getByIdRoom(req.params.room);
     res.status(200).send(data);
   } catch (e) {
     res.status(500).send({

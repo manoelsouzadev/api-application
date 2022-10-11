@@ -4,7 +4,7 @@ const repository = require("../repositories/conversa-repository");
 
 exports.post = async (req, res, next) => {
 
-  const { idUsuarioAtendimento, lida } = data;
+  const { idUsuarioAtendimento, lida } = req.body;
 
   try {
     await repository.create({

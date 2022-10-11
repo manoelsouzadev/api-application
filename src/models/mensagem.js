@@ -26,6 +26,9 @@ const schema = new Schema({
   dataMensagem: {
     type: String,
     required: true,
+  },
+  lida:{
+    type: Number
   }
 });
 

@@ -13,16 +13,17 @@ exports.getByIdRoom = async (room) => {
 
 exports.put = async (id, data) => {
 
-  const { idUsuarioAtendimento } = data;
+  const { idUsuarioAtendimento, lida } = data;
 
   Mensagem.findByIdAndUpdate(id, {
     $set: {
       room: data.room,
       idUsuario: data.idUsuario,
-      idUsuarioAtendimento: idUsuarioAtendimento ? idUsuarioAtendimento : null,
+      idUsuarioAtendimento: idUsuarioAtendimento,
       nomeUsuario: data.nomeUsuario,
       mensagem: data.mensagem,
-      dataMensagem: data.dataMensagem
+      dataMensagem: data.dataMensagem,
+      lida: lida
     },
   });
 };

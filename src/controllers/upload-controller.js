@@ -241,12 +241,12 @@ exports.getOAuth = async (req, res) => {
     //authorize(JSON.parse(content), getChannel);
     const auth = montarOAuth(JSON.parse(content));
     
-    oauth2Client.getToken(code, function(err, token) {
+    auth.getToken(code, function(err, token) {
       if (err) {
         console.log('Error while trying to retrieve access token', err);
         return;
       }
-      oauth2Client.credentials = token;
+      // auth.credentials = token;
       storeToken(token);
       //callback(oauth2Client);
     });

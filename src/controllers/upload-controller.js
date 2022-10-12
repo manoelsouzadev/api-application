@@ -105,7 +105,7 @@ const storeToken = token => {
 // }
 
 exports.getOAuth = async (req, res) => {
-  const oauth = req.query.code;
+  const code = req.query.code;
   console.log("consentimento dado: ", code);
   return res.status(200);
 

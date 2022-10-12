@@ -17,33 +17,70 @@ var TOKEN_DIR =
 var TOKEN_PATH = TOKEN_DIR + "upload_app_session.json";
 
 exports.autorizar = async (req, res) => {
-  fs.readFile(
-    "./credenciais/client_secret.json",
-    function processClientSecrets(err, content) {
-      if (err) {
-        console.log("Error loading client secret file: " + err);
-        return;
-      }
-      // Authorize a client with the loaded credentials, then call the YouTube API.
-      //authorize(JSON.parse(content), getChannel);
-      const auth = montarOAuth(JSON.parse(content));
 
-      //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
-      //   if (err) {
-      //     throw err
-      //   }
-
-      //   console.log('File is deleted.')
-      var authUrl = auth.generateAuthUrl({
-        access_type: "offline",
-        scope: SCOPES,
-      });
-
-      res.json(authUrl);
-
-      // });
+  fs.readFile(TOKEN_PATH, function (err, token) {
+    console.log(TOKEN_PATH);
+    if (err) {
+      fs.readFile(
+        "./credenciais/client_secret.json",
+        function processClientSecrets(err, content) {
+          if (err) {
+            console.log("Error loading client secret file: " + err);
+            return;
+          }
+          // Authorize a client with the loaded credentials, then call the YouTube API.
+          //authorize(JSON.parse(content), getChannel);
+          const auth = montarOAuth(JSON.parse(content));
+    
+          //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
+          //   if (err) {
+          //     throw err
+          //   }
+    
+          //   console.log('File is deleted.')
+          var authUrl = auth.generateAuthUrl({
+            access_type: "offline",
+            scope: SCOPES,
+          });
+    
+          res.json(authUrl);
+    
+          // });
+        }
+      );
+    } else {
+      return res.json({authUrl: null});
     }
-  );
+  });
+
+
+  // fs.readFile(
+  //   "./credenciais/client_secret.json",
+  //   function processClientSecrets(err, content) {
+  //     if (err) {
+  //       console.log("Error loading client secret file: " + err);
+  //       return;
+  //     }
+  //     // Authorize a client with the loaded credentials, then call the YouTube API.
+  //     //authorize(JSON.parse(content), getChannel);
+  //     const auth = montarOAuth(JSON.parse(content));
+
+  //     //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
+  //     //   if (err) {
+  //     //     throw err
+  //     //   }
+
+  //     //   console.log('File is deleted.')
+  //     var authUrl = auth.generateAuthUrl({
+  //       access_type: "offline",
+  //       scope: SCOPES,
+  //     });
+
+  //     res.json(authUrl);
+
+  //     // });
+  //   }
+  // );
 };
 
 exports.removerAutorizacao = async (req, res) => {

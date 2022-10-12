@@ -10,5 +10,6 @@ const router = express.Router();
 router.post('/', multipartMiddleware, uploadController.upload);
 router.get('/autorizar', uploadController.autorizar);
 router.get('/oauth2', uploadController.getOAuth);
+router.delete("/remover-autorizacao", uploadController.removerAutorizacao);
 
 module.exports = router;

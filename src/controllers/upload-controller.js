@@ -1,46 +1,58 @@
-var fs = require('fs');
-var readline = require('readline');
-var {google} = require('googleapis');
+var fs = require("fs");
+var readline = require("readline");
+var { google } = require("googleapis");
 var OAuth2 = google.auth.OAuth2;
 const service = google.youtube("v3");
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/youtube-nodejs-quickstart.json
 const SCOPES = [
-  'https://www.googleapis.com/auth/youtube.upload',
-  'https://www.googleapis.com/auth/youtube.readonly'
+  "https://www.googleapis.com/auth/youtube.upload",
+  "https://www.googleapis.com/auth/youtube.readonly",
 ];
 
-var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credenciais/';
-var TOKEN_PATH = TOKEN_DIR + 'upload_app_session.json';
+var TOKEN_DIR =
+  (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) +
+  "/.credenciais/";
+var TOKEN_PATH = TOKEN_DIR + "upload_app_session.json";
 
 exports.autorizar = async (req, res) => {
-  fs.readFile('./credenciais/client_secret.json', function processClientSecrets(err, content) {
-    if (err) {
-      console.log('Error loading client secret file: ' + err);
-      return;
+  fs.readFile(
+    "./credenciais/client_secret.json",
+    function processClientSecrets(err, content) {
+      if (err) {
+        console.log("Error loading client secret file: " + err);
+        return;
+      }
+      // Authorize a client with the loaded credentials, then call the YouTube API.
+      //authorize(JSON.parse(content), getChannel);
+      const auth = montarOAuth(JSON.parse(content));
+
+      //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
+      //   if (err) {
+      //     throw err
+      //   }
+
+      //   console.log('File is deleted.')
+      var authUrl = auth.generateAuthUrl({
+        access_type: "offline",
+        scope: SCOPES,
+      });
+
+      res.json(authUrl);
+
+      // });
     }
-    // Authorize a client with the loaded credentials, then call the YouTube API.
-    //authorize(JSON.parse(content), getChannel);
-    const auth = montarOAuth(JSON.parse(content));
-    
+  );
+};
 
-  //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
-  //   if (err) {
-  //     throw err
-  //   }
-  
-  //   console.log('File is deleted.')
-  var authUrl = auth.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES
-  });
-
-  res.json(authUrl);
-
-  // });
-  });
+exports.removerAutorizacao = async (req, res) => {
+  fs.unlink(TOKEN_PATH, err => {
+    if(err){
+      return res.status(400).send({ message: "Houve um erro ao remover a autorização"});
+    }
+    return res.status(200).send({ message: "Autorização removida com sucesso"});
+  });  
 };
 
 function montarOAuth(credentials) {
@@ -52,40 +64,39 @@ function montarOAuth(credentials) {
 }
 
 exports.upload = async (req, res) => {
-
   const files = req.files;
 
-  await fs.rename(files.file.path, `uploads\\${files.file.originalFilename}`, () => {
-    console.log("Arquivo Renomeado");
-  });
-
-  fs.readFile('./credenciais/client_secret.json', function processClientSecrets(err, content) {
-    if (err) {
-      console.log('Error loading client secret file: ' + err);
-      return;
+  await fs.rename(
+    files.file.path,
+    `uploads\\${files.file.originalFilename}`,
+    () => {
+      console.log("Arquivo Renomeado");
     }
-    // Authorize a client with the loaded credentials, then call the YouTube API.
-    //authorize(JSON.parse(content), getChannel);
-  authorize(JSON.parse(content), uploadVideo);
+  );
 
-  //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
-  //   if (err) {
-  //     throw err
-  //   }
-  
-  //   console.log('File is deleted.')
-  // });
-  });
-}
+  fs.readFile(
+    "./credenciais/client_secret.json",
+    function processClientSecrets(err, content) {
+      if (err) {
+        console.log("Error loading client secret file: " + err);
+        return;
+      }
+      // Authorize a client with the loaded credentials, then call the YouTube API.
+      //authorize(JSON.parse(content), getChannel);
+      authorize(JSON.parse(content), uploadVideo);
 
+      //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
+      //   if (err) {
+      //     throw err
+      //   }
 
-  
-
-
-
+      //   console.log('File is deleted.')
+      // });
+    }
+  );
+};
 
 // Load client secrets from a local file.
-
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -101,14 +112,14 @@ function authorize(credentials, callback) {
   var oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function(err, token) {
-    console.log(TOKEN_PATH)
-  //  if (err) {
+  fs.readFile(TOKEN_PATH, function (err, token) {
+    console.log(TOKEN_PATH);
+    if (err) {
       getNewToken(oauth2Client, callback);
-    //} else {
+    } else {
       oauth2Client.credentials = JSON.parse(token);
       callback(oauth2Client);
-    //}
+    }
   });
 }
 
@@ -122,19 +133,19 @@ function authorize(credentials, callback) {
  */
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES
+    access_type: "offline",
+    scope: SCOPES,
   });
-  console.log('Authorize this app by visiting this url: ', authUrl);
+  console.log("Authorize this app by visiting this url: ", authUrl);
   var rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
-  rl.question('Enter the code from that page here: ', function(code) {
+  rl.question("Enter the code from that page here: ", function (code) {
     rl.close();
-    oauth2Client.getToken(code, function(err, token) {
+    oauth2Client.getToken(code, function (err, token) {
       if (err) {
-        console.log('Error while trying to retrieve access token', err);
+        console.log("Error while trying to retrieve access token", err);
         return;
       }
       oauth2Client.credentials = token;
@@ -153,13 +164,13 @@ function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
   } catch (err) {
-    if (err.code != 'EEXIST') {
+    if (err.code != "EEXIST") {
       throw err;
     }
   }
   fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
     if (err) throw err;
-    console.log('Token stored to ' + TOKEN_PATH);
+    console.log("Token stored to " + TOKEN_PATH);
   });
 }
 
@@ -169,59 +180,63 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function getChannel(auth) {
-  var service = google.youtube('v3');
-  service.channels.list({
-    auth: auth,
-    part: 'snippet,contentDetails,statistics',
-    forUsername: 'GoogleDevelopers'
-  }, function(err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
+  var service = google.youtube("v3");
+  service.channels.list(
+    {
+      auth: auth,
+      part: "snippet,contentDetails,statistics",
+      forUsername: "GoogleDevelopers",
+    },
+    function (err, response) {
+      if (err) {
+        console.log("The API returned an error: " + err);
+        return;
+      }
+      var channels = response.data.items;
+      if (channels.length == 0) {
+        console.log("No channel found.");
+      } else {
+        console.log(
+          "This channel's ID is %s. Its title is '%s', and " +
+            "it has %s views.",
+          channels[0].id,
+          channels[0].snippet.title,
+          channels[0].statistics.viewCount
+        );
+      }
     }
-    var channels = response.data.items;
-    if (channels.length == 0) {
-      console.log('No channel found.');
-    } else {
-      console.log('This channel\'s ID is %s. Its title is \'%s\', and ' +
-                  'it has %s views.',
-                  channels[0].id,
-                  channels[0].snippet.title,
-                  channels[0].statistics.viewCount);
-    }
-  });
+  );
 }
-
 
 const uploadVideo = (auth, cb) => {
   service.videos.insert(
-      {
-          auth: auth,
-          part: 'snippet,contentDetails,status',
-          resource: {
-              // Video title and description
-              snippet: {
-                  title: 'My title',
-                  description: 'My description'
-              },
-              // I set to private for tests
-              status: {
-                  privacyStatus: 'private'
-              }
-          },
-
-          // Create the readable stream to upload the video
-          media: {
-              body: fs.createReadStream('./uploads/video-teste.mp4') // Change here to your real video
-          }
+    {
+      auth: auth,
+      part: "snippet,contentDetails,status",
+      resource: {
+        // Video title and description
+        snippet: {
+          title: "My title",
+          description: "My description",
+        },
+        // I set to private for tests
+        status: {
+          privacyStatus: "private",
+        },
       },
-      (error, data) => {
-          if (error) {
-             console.log(error);
-          }
-          console.log('https://www.youtube.com/watch?v=' + data);
-          return console.log(data);
+
+      // Create the readable stream to upload the video
+      media: {
+        body: fs.createReadStream("./uploads/video-teste.mp4"), // Change here to your real video
+      },
+    },
+    (error, data) => {
+      if (error) {
+        console.log(error);
       }
+      console.log("https://www.youtube.com/watch?v=" + data);
+      return console.log(data);
+    }
   );
 };
 
@@ -232,27 +247,28 @@ exports.getOAuth = async (req, res) => {
 
   const code = req.query.code;
 
-  fs.readFile('./credenciais/client_secret.json', function processClientSecrets(err, content) {
-    if (err) {
-      console.log('Error loading client secret file: ' + err);
-      return;
-    }
-    // Authorize a client with the loaded credentials, then call the YouTube API.
-    //authorize(JSON.parse(content), getChannel);
-    const auth = montarOAuth(JSON.parse(content));
-    
-    auth.getToken(code, function(err, token) {
+  fs.readFile(
+    "./credenciais/client_secret.json",
+    function processClientSecrets(err, content) {
       if (err) {
-        console.log('Error while trying to retrieve access token', err);
+        console.log("Error loading client secret file: " + err);
         return;
       }
-      // auth.credentials = token;
-      storeToken(token);
-      //callback(oauth2Client);
-    });
+      // Authorize a client with the loaded credentials, then call the YouTube API.
+      //authorize(JSON.parse(content), getChannel);
+      const auth = montarOAuth(JSON.parse(content));
 
-  });
-   
-    console.log("consentimento dado: ", code);
+      auth.getToken(code, function (err, token) {
+        if (err) {
+          console.log("Error while trying to retrieve access token", err);
+          return;
+        }
+        // auth.credentials = token;
+        storeToken(token);
+        //callback(oauth2Client);
+      });
+    }
+  );
 
-}
+  console.log("consentimento dado: ", code);
+};

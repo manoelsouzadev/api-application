@@ -298,14 +298,16 @@ exports.getOAuth = async (req, res) => {
       auth.getToken(code, function (err, token) {
         if (err) {
           console.log("Error while trying to retrieve access token", err);
-          return;
+          return res.status(400).send("<h5>Não foi possível autorizar o upload. Tente novamente!</h5>");;
         }
         // auth.credentials = token;
         storeToken(token);
         //callback(oauth2Client);
+        return res.status(200).send("<h5>Feche esta página e faça seu upload!</h5>");;
       });
     }
   );
 
+  
   console.log("consentimento dado: ", code);
 };

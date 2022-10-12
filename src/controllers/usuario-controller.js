@@ -59,7 +59,7 @@ exports.authenticate = async (req, res, next) => {
 
     console.log("usuario", usuario);
     if (!usuario) {
-      res.status(404).send({
+      res.status(204).send({
         message: "Usuário ou senha inválidos",
       });
       return;

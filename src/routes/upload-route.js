@@ -8,5 +8,6 @@ const multipartMiddleware = multipart({ uploadDir: "./uploads"});
 const router = express.Router();
 
 router.post('/', multipartMiddleware, uploadController.post);
+router.get('/oauth2', uploadController.getOAuth);
 
 module.exports = router;

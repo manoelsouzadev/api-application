@@ -66,5 +66,7 @@ router.put('/:id', cultoController.put);
  */
 router.delete('/:id', cultoController.delete);
 
+router.get('/registros/count', cultoController.getCount);
+
 module.exports = router;
 

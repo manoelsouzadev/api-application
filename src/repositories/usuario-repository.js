@@ -48,3 +48,7 @@ exports.put = async (id, data) => {
 exports.delete = async(id) => {
   await Usuario.findOneAndRemove(id);
 };
+
+exports.getCount = async(req, res) => {
+  return await Usuario.find({}).count();
+}

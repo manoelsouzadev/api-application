@@ -88,6 +88,7 @@ const anotacaoRoute = require('./routes/anotacao-route');
 const conversaRoute = require('./routes/conversa-route');
 const pedidoOracaoRoute = require('./routes/pedido-oracao-route');
 const uploadRoute = require('./routes/upload-route');
+const dashboardRoute = require('./routes/dashboard-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -120,6 +121,7 @@ app.use('/anotacoes', anotacaoRoute);
 app.use('/conversas', conversaRoute);
 app.use("/pedidos-oracoes",pedidoOracaoRoute);
 app.use("/uploads", uploadRoute);
+app.use("/dashboard", dashboardRoute);
 
 expressSwagger(options);
 

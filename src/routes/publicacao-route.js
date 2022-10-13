@@ -11,6 +11,7 @@ router.get('/categoria/:id/publicacoes', publicacaoController.getListById);
 router.get('/:id', publicacaoController.getById);
 router.put('/:id', publicacaoController.put);
 router.delete('/:id', publicacaoController.delete);
+router.get('/registros/count', publicacaoController.getCount);
 
 module.exports = router;
 

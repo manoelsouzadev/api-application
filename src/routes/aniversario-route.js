@@ -62,4 +62,6 @@ router.put('/:id', aniversarioController.put);
  */
 router.delete('/:id', aniversarioController.delete);
 
+router.get('/registros/count', aniversarioController.getCount);
+
 module.exports = router;

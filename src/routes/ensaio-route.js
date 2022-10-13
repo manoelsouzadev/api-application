@@ -66,5 +66,7 @@ router.put('/:id', ensaioController.put);
  */
 router.delete('/:id', ensaioController.delete);
 
+router.get('/registros/count', ensaioController.getCount);
+
 module.exports = router;
 

@@ -72,3 +72,6 @@ exports.delete = (req, res, next) => {
     });
 };
 
+exports.getCount = async (req, res) => {
+  return await Aniversario.find({}).count();
+};

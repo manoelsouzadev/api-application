@@ -10,6 +10,7 @@ router.get('/', oracaoController.get);
 router.get('/:id', oracaoController.getById);
 router.put('/:id', oracaoController.put);
 router.delete('/:id', oracaoController.delete);
+router.get('/registros/count', oracaoController.getCount);
 
 module.exports = router;
 

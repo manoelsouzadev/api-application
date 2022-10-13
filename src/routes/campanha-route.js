@@ -68,4 +68,6 @@ router.put('/:id', campanhaController.put);
  */
 router.delete('/:id', campanhaController.delete);
 
+router.get('/registros/count', campanhaController.getCount);
+
 module.exports = router;

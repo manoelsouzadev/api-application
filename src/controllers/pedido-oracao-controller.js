@@ -31,3 +31,7 @@ exports.put = async (id, data) => {
 exports.delete = async(id) => {
   await PedidoOracaoRepository.delete(id);
 };
+
+exports.getCount = async (req, res) => {
+  return await PedidoOracaoRepository.getCount();
+};

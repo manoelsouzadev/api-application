@@ -180,3 +180,7 @@ exports.verifyToken = async (req, res, next) => {
   return authService.verifyToken(res, token);
 
 }; 
+
+exports.getCount = async (req, res) => {
+  return await repository.getCount(req, res); 
+};

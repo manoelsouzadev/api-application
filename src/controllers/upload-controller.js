@@ -26,7 +26,7 @@ exports.autorizar = async (req, res) => {
         function processClientSecrets(err, content) {
           if (err) {
             console.log("Error loading client secret file: " + err);
-            return;
+            return res.json({ authUrl: null});
           }
           // Authorize a client with the loaded credentials, then call the YouTube API.
           //authorize(JSON.parse(content), getChannel);

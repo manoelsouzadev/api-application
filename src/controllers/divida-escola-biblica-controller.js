@@ -50,6 +50,7 @@ exports.put = (req, res, next) => {
       valorDevido: req.body.valorDevido,
       valorPago: req.body.valorPago,
       saldoDevedor: req.body.saldoDevedor,
+      troco: req.body.troco
     },
   })
     .then((x) => {

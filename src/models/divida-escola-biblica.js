@@ -34,6 +34,9 @@ const schema = new Schema({
   },
   saldoDevedor:{
     type: Number
+  },
+  troco:{
+    type: Number
   }
 });
 

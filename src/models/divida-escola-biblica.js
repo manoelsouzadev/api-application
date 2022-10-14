@@ -20,7 +20,7 @@ const schema = new Schema({
     trim: true
   },
   situacao: {
-    type: [String],
+    type: String,
     required: true,
     enum: ['pago', 'nao_pago', 'em_pagamento'],
     default: 'nao_pago'

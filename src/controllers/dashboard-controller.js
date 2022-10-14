@@ -8,6 +8,8 @@ const oracaoController = require("../controllers/oracao-controller");
 const pedidoOracaoController = require("../controllers/pedido-oracao-controller");
 const publicacaoController = require("../controllers/publicacao-controller");
 const usuarioController = require("../controllers/usuario-controller");
+const dividaEscolaBiblicaController = require("../controllers/divida-escola-biblica-controller");
+const revistaEscolaBiblicaController = require("../controllers/revista-escola-biblica-controller");
 
 exports.getCounts = async (req, res) => {
   const aniversarioCount = await aniversarioController.getCount(req, res);
@@ -19,7 +21,9 @@ exports.getCounts = async (req, res) => {
    const oracaoCount = await oracaoController.getCount(req, res);
    const pedidoOracaoCount = await pedidoOracaoController.getCount(req, res);
    const publicacaoCount = await publicacaoController.getCount(req, res);
-//    const usuarioCount = await usuarioController.getCount(req, res);
+   const usuarioCount = await usuarioController.getCount(req, res);
+   const dividaCount = await dividaEscolaBiblicaController.getCount(req, res);
+   const revistaCount = await revistaEscolaBiblicaController.getCount(req, res);
 
   let data = [
     { label: "Aniversários", data: aniversarioCount},
@@ -31,6 +35,9 @@ exports.getCounts = async (req, res) => {
     { label: "Orações", data: oracaoCount},
     { label: "Pedidos de Oração", data: pedidoOracaoCount ? pedidoOracaoCount.length : 0},
     { label: "Publicações", data: publicacaoCount},
+    { label: "Usuários", data: usuarioCount},
+    { label: "Dívidas EBD", data: dividaCount},
+    { label: "Revistas EBD", data: revistaCount},
   ];
 
   await res.status(200).send({ data: data });
@@ -41,4 +48,22 @@ exports.getCountUsuarios = async (req, res) => {
     const usuarioCount = await usuarioController.getCount(req, res);
 
     await res.status(200).send({ label: "Usuários", data: usuarioCount });
+}
+
+exports.getCountDividasEscolaBiblica = async (req, res) => {
+  const dividaCount = await dividaEscolaBiblicaController.getCount(req, res);
+
+  await res.status(200).send({ label: "Dívidas EBD", data: dividaCount });
+}
+
+exports.getCountRevistasEscolaBiblica = async (req, res) => {
+  const revistaCount = await revistaEscolaBiblicaController.getCount(req, res);
+
+  await res.status(200).send({ label: "Revistas EBD", data: revistaCount });
+}
+
+exports.getValoresDevidosEscolaBiblica = async (req, res) => {
+
+  return await revistaEscolaBiblicaController.getValoresDevidos(req, res);
+
 }

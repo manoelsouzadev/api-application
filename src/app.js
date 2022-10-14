@@ -70,6 +70,8 @@ const Usuario = require('./models/usuario');
 const Anotacao = require('./models/anotacao');
 const Mensagem = require('./models/mensagem');
 const PedidoOracao = require('./models/pedido-oracao');
+const DividaEscolaBiblica = require('./models/divida-escola-biblica');
+const revistaEscolaBiblica = require('./models/revista-escola-biblica');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
@@ -89,6 +91,8 @@ const conversaRoute = require('./routes/conversa-route');
 const pedidoOracaoRoute = require('./routes/pedido-oracao-route');
 const uploadRoute = require('./routes/upload-route');
 const dashboardRoute = require('./routes/dashboard-route');
+const dividaRoute = require('./routes/divida-escola-biblica-route');
+const revistaRoute = require('./routes/revista-escola-biblica-route');
 
 mongoose.connect(   
   db.mongoURI
@@ -122,6 +126,8 @@ app.use('/conversas', conversaRoute);
 app.use("/pedidos-oracoes",pedidoOracaoRoute);
 app.use("/uploads", uploadRoute);
 app.use("/dashboard", dashboardRoute);
+app.use("/dividas-ebd", dividaRoute);
+app.use("/revistas-ebd", revistaRoute);
 
 expressSwagger(options);
 

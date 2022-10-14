@@ -31,6 +31,9 @@ exports.put = async (id, data) => {
       username: data.username,
       password: data.password,
       roles: data.roles,
+      membro: data.membro,
+      dataNascimento: data.dataNascimento,
+      nome: data.nome
     }
   })
     .then(x => {

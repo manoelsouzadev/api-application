@@ -29,6 +29,9 @@ exports.post = async (req, res, next) => {
       username: req.body.username,
       password: md5(req.body.password + global.SALT_KEY),
       roles: req.body.roles,
+      membro: req.body.membro,
+      dataNascimento: req.body.dataNascimento,
+      nome: req.body.nome
     });
 
     // emailService.send(

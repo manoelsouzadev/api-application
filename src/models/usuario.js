@@ -8,6 +8,17 @@ const schema = new Schema({
     type: String,
     required: true
   },
+  nome: {
+    type: String,
+    required: true
+  },
+  dataNascimento:{
+    type: String
+  },
+  membro:{
+    type: Boolean,
+    required: true
+  },
   password: {
     type: String,
     required: true

@@ -17,7 +17,7 @@ exports.post = (req, res, next) => {
         message: "Falha ao cadastrar a dívida",
         data: e,
       });
-    });
+    }); 
 };
 
 exports.get = (req, res, next) => {

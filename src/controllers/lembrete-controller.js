@@ -21,7 +21,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    Lembrete.find()
+  Lembrete.find()
     .then(data => {
       res.status(200).send(data);
     })
@@ -31,7 +31,7 @@ exports.get = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-    Lembrete.findById(req.params.id)
+  Lembrete.findById(req.params.id)
     .then(data => {
       res.status(200).send(data);
     })
@@ -41,14 +41,16 @@ exports.getById = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
-    Lembrete.findByIdAndUpdate(req.params.id, {
-    $set: {
-      titulo: req.body.titulo,
-      texto: req.body.texto
-    }
-  })
+  Lembrete.findByIdAndUpdate(req.params.id, {
+      $set: {
+        titulo: req.body.titulo,
+        texto: req.body.texto
+      }
+    })
     .then(x => {
-      res.status(200).send({ message: 'Lembrete atualizado com sucesso!' });
+      res.status(200).send({
+        message: 'Lembrete atualizado com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({
@@ -59,9 +61,11 @@ exports.put = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    Lembrete.findByIdAndRemove(req.params.id)
+  Lembrete.findByIdAndRemove(req.params.id)
     .then(x => {
-      res.status(200).send({ message: 'Lembrete removido com sucesso!' });
+      res.status(200).send({
+        message: 'Lembrete removido com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({
@@ -72,5 +76,5 @@ exports.delete = (req, res, next) => {
 };
 
 exports.getCount = async (req, res) => {
- return await Lembrete.find({}).count();
+  return await Lembrete.find({}).count();
 };

@@ -1,5 +1,4 @@
 "use  strict";
-const mongoose = require("mongoose");
 const Pedido = require("../models/pedido-oracao");
 const Mensagem = require("../models/mensagem");
 
@@ -30,5 +29,5 @@ exports.delete = async (id) => {
 };
 
 exports.getCount = async (req, res, next) => {
- return await Mensagem.find({}).distinct('idUsuario');
+  return await Mensagem.find({}).distinct('idUsuario');
 }

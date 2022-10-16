@@ -42,13 +42,15 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   RevistaEscolaBiblica.findByIdAndUpdate(req.params.id, {
-    $set: {
-      nome: req.body.nome,
-      valor: req.body.valor,
-    },
-  })
+      $set: {
+        nome: req.body.nome,
+        valor: req.body.valor,
+      },
+    })
     .then((x) => {
-      res.status(200).send({ message: "Revista atualizada com sucesso!" });
+      res.status(200).send({
+        message: "Revista atualizada com sucesso!"
+      });
     })
     .catch((e) => {
       res.status(400).send({
@@ -61,7 +63,9 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
   RevistaEscolaBiblica.findByIdAndRemove(req.params.id)
     .then((x) => {
-      res.status(200).send({ message: "Revista removida com sucesso!" });
+      res.status(200).send({
+        message: "Revista removida com sucesso!"
+      });
     })
     .catch((e) => {
       res.status(400).send({

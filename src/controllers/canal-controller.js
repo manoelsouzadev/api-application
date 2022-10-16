@@ -42,13 +42,15 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   Canal.findByIdAndUpdate(req.params.id, {
-    $set: {
-      idCanal: req.body.idCanal,
-      nome: req.body.nome
-    },
-  })
+      $set: {
+        idCanal: req.body.idCanal,
+        nome: req.body.nome
+      },
+    })
     .then((x) => {
-      res.status(200).send({ message: "Canal atualizado com sucesso!" });
+      res.status(200).send({
+        message: "Canal atualizado com sucesso!"
+      });
     })
     .catch((e) => {
       res.status(400).send({
@@ -61,7 +63,9 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
   Canal.findByIdAndRemove(req.params.id)
     .then((x) => {
-      res.status(200).send({ message: "Canal removido com sucesso!" });
+      res.status(200).send({
+        message: "Canal removido com sucesso!"
+      });
     })
     .catch((e) => {
       res.status(400).send({

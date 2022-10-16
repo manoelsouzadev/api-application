@@ -14,7 +14,7 @@ const router = express.Router();
  * @property {string} descricao.required
  * @property {string} urlImagem
  * @property {string} adicional
-*/
+ */
 
 /**
  * Este endpoint cria um novo ensaio
@@ -69,4 +69,3 @@ router.delete('/:id', ensaioController.delete);
 router.get('/registros/count', ensaioController.getCount);
 
 module.exports = router;
-

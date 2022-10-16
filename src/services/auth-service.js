@@ -4,7 +4,9 @@ const jwt = require('jsonwebtoken');
 
 exports.generateToken = async data => {
   console.log("salt", global.SALT_KEY)
-  return jwt.sign(data, global.SALT_KEY, { expiresIn: '1d' });
+  return jwt.sign(data, global.SALT_KEY, {
+    expiresIn: '1d'
+  });
 };
 
 exports.decodeToken = async token => {
@@ -12,7 +14,7 @@ exports.decodeToken = async token => {
   return data;
 };
 
-exports.authorize = function(req, res, next) {
+exports.authorize = function (req, res, next) {
   var token =
     req.body.token || req.query.token || req.headers['x-access-token'];
   if (!token) {
@@ -21,7 +23,7 @@ exports.authorize = function(req, res, next) {
       situacao: 0
     });
   } else {
-    jwt.verify(token, global.SALT_KEY, function(error, decoded) {
+    jwt.verify(token, global.SALT_KEY, function (error, decoded) {
       if (error) {
         res.status(401).json({
           message: 'Token Inválido',
@@ -34,25 +36,25 @@ exports.authorize = function(req, res, next) {
   }
 };
 
-exports.isAdmin = function(req, res, next){
+exports.isAdmin = function (req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-  if(!token){
+  if (!token) {
     res.status(401).json({
       message: 'Token Inválido',
       situacao: 0
     });
-  }else{
-    jwt.verify(token, global.SALT_KEY, function (error, decoded){
-      if (error){
+  } else {
+    jwt.verify(token, global.SALT_KEY, function (error, decoded) {
+      if (error) {
         res.status(401).json({
           message: 'Token Inválido',
           situacao: 0
         });
-      }else{
-        if (decoded.roles.includes('admin')){
+      } else {
+        if (decoded.roles.includes('admin')) {
           next();
-        }else{
+        } else {
           res.status(403).json({
             message: 'Esta funcionalidade é restrita para administradores'
           });
@@ -62,7 +64,7 @@ exports.isAdmin = function(req, res, next){
   }
 };
 
-exports.verifyToken = async (res,token) => {
+exports.verifyToken = async (res, token) => {
   console.log("token", token)
   if (token == null) {
     console.log("error token final 2", error)
@@ -71,7 +73,7 @@ exports.verifyToken = async (res,token) => {
       situacao: 0
     });
   } else {
-    jwt.verify(token, global.SALT_KEY, function(error, decoded) {
+    jwt.verify(token, global.SALT_KEY, function (error, decoded) {
       if (error) {
         console.log("error token final", error)
         res.status(401).json({
@@ -86,4 +88,4 @@ exports.verifyToken = async (res,token) => {
       }
     });
   }
-}; 
+};

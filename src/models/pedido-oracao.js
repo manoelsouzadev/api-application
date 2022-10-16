@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  room:{
+  room: {
     type: String,
     required: true,
   },
@@ -16,7 +16,7 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  idUsuarioAtendimento:{
+  idUsuarioAtendimento: {
     type: String
   },
   data: {
@@ -28,4 +28,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model("PedidoOracao", schema); 
+module.exports = mongoose.model("PedidoOracao", schema);

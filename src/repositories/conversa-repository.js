@@ -1,5 +1,4 @@
 "use  strict";
-const mongoose = require("mongoose");
 const Mensagem = require("../models/mensagem");
 
 exports.save = async data => {

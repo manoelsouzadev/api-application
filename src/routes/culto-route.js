@@ -14,7 +14,7 @@ const router = express.Router();
  * @property {string} descricao.required
  * @property {string} urlImagem
  * @property {string} adicional
-*/
+ */
 
 /**
  * Este endpoint cria um novo culto
@@ -69,4 +69,3 @@ router.delete('/:id', cultoController.delete);
 router.get('/registros/count', cultoController.getCount);
 
 module.exports = router;
-

@@ -31,7 +31,7 @@ exports.get = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-    Evento.findById(req.params.id)
+  Evento.findById(req.params.id)
     .then(data => {
       res.status(200).send(data);
     })
@@ -41,34 +41,38 @@ exports.getById = (req, res, next) => {
 };
 
 exports.getByEventType = (req, res, next) => {
-  Evento.find({ tipo: req.params.tipo})
-  .then(data => {
-    res.status(200).send(data);
-  })
-  .catch(e => {
-    res.status(400).send(e);
-  });
+  Evento.find({
+      tipo: req.params.tipo
+    })
+    .then(data => {
+      res.status(200).send(data);
+    })
+    .catch(e => {
+      res.status(400).send(e);
+    });
 };
 
 
 exports.put = (req, res, next) => {
-    Evento.findByIdAndUpdate(req.params.id, {
-    $set: {
-      titulo: req.body.titulo,
-      horarioInicio: req.body.horarioInicio,
-      horarioTermino: req.body.horarioTermino,
-      local: req.body.local,
-      dataInicio: req.body.dataInicio,
-      dataFinal: req.body.dataFinal,
-      dia: req.body.dia,
-      tipo: req.body.tipo,
-      descricao: req.body.descricao,
-      urlImagem: req.body.urlImagem,
-      adicional: req.body.adicional
-    }
-  })
+  Evento.findByIdAndUpdate(req.params.id, {
+      $set: {
+        titulo: req.body.titulo,
+        horarioInicio: req.body.horarioInicio,
+        horarioTermino: req.body.horarioTermino,
+        local: req.body.local,
+        dataInicio: req.body.dataInicio,
+        dataFinal: req.body.dataFinal,
+        dia: req.body.dia,
+        tipo: req.body.tipo,
+        descricao: req.body.descricao,
+        urlImagem: req.body.urlImagem,
+        adicional: req.body.adicional
+      }
+    })
     .then(x => {
-      res.status(200).send({ message: 'Evento atualizado com sucesso!' });
+      res.status(200).send({
+        message: 'Evento atualizado com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({
@@ -79,9 +83,11 @@ exports.put = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    Evento.findByIdAndRemove(req.params.id)
+  Evento.findByIdAndRemove(req.params.id)
     .then(x => {
-      res.status(200).send({ message: 'Evento removido com sucesso!' });
+      res.status(200).send({
+        message: 'Evento removido com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({

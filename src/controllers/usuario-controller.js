@@ -151,11 +151,13 @@ exports.get = async (req, res, next) => {
 
 exports.put = async (req, res, next) => {
   try {
-    
+
     req.body.password = md5(req.body.password + global.SALT_KEY);
 
     await repository.put(req.params.id, req.body);
-    res.status(200).send({ message: "Usuário atualizado com sucesso!" });
+    res.status(200).send({
+      message: "Usuário atualizado com sucesso!"
+    });
   } catch (e) {
     console.log("e put", e)
     res.status(500).send({
@@ -167,7 +169,9 @@ exports.put = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
   try {
     await repository.delete(req.params.id);
-    res.status(200).send({ message: "Usuário removido com sucesso!" });
+    res.status(200).send({
+      message: "Usuário removido com sucesso!"
+    });
   } catch (e) {
     console.log(e)
     res.status(400).send({
@@ -179,11 +183,11 @@ exports.delete = async (req, res, next) => {
 
 exports.verifyToken = async (req, res, next) => {
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  
+
   return authService.verifyToken(res, token);
 
-}; 
+};
 
 exports.getCount = async (req, res) => {
-  return await repository.getCount(req, res); 
+  return await repository.getCount(req, res);
 };

@@ -1,6 +1,8 @@
 var fs = require("fs");
 var readline = require("readline");
-var { google } = require("googleapis");
+var {
+  google
+} = require("googleapis");
 var OAuth2 = google.auth.OAuth2;
 const service = google.youtube("v3");
 
@@ -26,30 +28,34 @@ exports.autorizar = async (req, res) => {
         function processClientSecrets(err, content) {
           if (err) {
             console.log("Error loading client secret file: " + err);
-            return res.json({ authUrl: null});
+            return res.json({
+              authUrl: null
+            });
           }
           // Authorize a client with the loaded credentials, then call the YouTube API.
           //authorize(JSON.parse(content), getChannel);
           const auth = montarOAuth(JSON.parse(content));
-    
+
           //  fs.unlink(`uploads\\${files.file.originalFilename}`, err => {
           //   if (err) {
           //     throw err
           //   }
-    
+
           //   console.log('File is deleted.')
           var authUrl = auth.generateAuthUrl({
             access_type: "offline",
             scope: SCOPES,
           });
-    
+
           res.json(authUrl);
-    
+
           // });
         }
       );
     } else {
-      return res.json({authUrl: null});
+      return res.json({
+        authUrl: null
+      });
     }
   });
 
@@ -85,11 +91,15 @@ exports.autorizar = async (req, res) => {
 
 exports.removerAutorizacao = async (req, res) => {
   fs.unlink(TOKEN_PATH, err => {
-    if(err){
-      return res.status(400).send({ message: "Houve um erro ao remover a autorização"});
+    if (err) {
+      return res.status(400).send({
+        message: "Houve um erro ao remover a autorização"
+      });
     }
-    return res.status(200).send({ message: "Autorização removida com sucesso"});
-  });  
+    return res.status(200).send({
+      message: "Autorização removida com sucesso"
+    });
+  });
 };
 
 function montarOAuth(credentials) {
@@ -218,8 +228,7 @@ function storeToken(token) {
  */
 function getChannel(auth) {
   var service = google.youtube("v3");
-  service.channels.list(
-    {
+  service.channels.list({
       auth: auth,
       part: "snippet,contentDetails,statistics",
       forUsername: "GoogleDevelopers",
@@ -235,7 +244,7 @@ function getChannel(auth) {
       } else {
         console.log(
           "This channel's ID is %s. Its title is '%s', and " +
-            "it has %s views.",
+          "it has %s views.",
           channels[0].id,
           channels[0].snippet.title,
           channels[0].statistics.viewCount
@@ -246,8 +255,7 @@ function getChannel(auth) {
 }
 
 const uploadVideo = (auth, cb) => {
-  service.videos.insert(
-    {
+  service.videos.insert({
       auth: auth,
       part: "snippet,contentDetails,status",
       resource: {
@@ -308,6 +316,6 @@ exports.getOAuth = async (req, res) => {
     }
   );
 
-  
+
   console.log("consentimento dado: ", code);
 };

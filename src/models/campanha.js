@@ -19,12 +19,12 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  dataInicio:{
+  dataInicio: {
     type: String,
     required: true,
     trim: true
   },
-  dataFinal:{
+  dataFinal: {
     type: String,
     required: true,
     trim: true
@@ -39,12 +39,12 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  urlImagem:{
+  urlImagem: {
     type: String,
     //required: true,
     trim: true
   },
-   adicional:{
+  adicional: {
     type: String,
     trim: true
   }

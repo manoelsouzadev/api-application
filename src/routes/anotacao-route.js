@@ -9,7 +9,7 @@ const router = express.Router();
  * @typedef Anotacao
  * @property {string} anotacao
  * @property {string} idUsuario.required
-*/
+ */
 
 /**
  * Este endpoint cria uma nova anotação

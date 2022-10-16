@@ -21,7 +21,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    Publicacao.find()
+  Publicacao.find()
     .then(data => {
       res.status(200).send(data);
     })
@@ -31,7 +31,7 @@ exports.get = (req, res, next) => {
 };
 
 exports.getListById = (req, res, next) => {
-    Publicacao.find(req.body.id)
+  Publicacao.find(req.body.id)
     .then(data => {
       res.status(200).send(data);
     })
@@ -41,7 +41,7 @@ exports.getListById = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-    Publicacao.findById(req.params.id)
+  Publicacao.findById(req.params.id)
     .then(data => {
       res.status(200).send(data);
     })
@@ -52,23 +52,25 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   console.log(req.body)
-    Publicacao.findByIdAndUpdate(req.params.id, {
-    $set: {
-      titulo: req.body.titulo,
-      slug: req.body.slug,
-      descricao: req.body.descricao,
-      texto: req.body.texto,
-      textoSemFormatacao: req.body.textoSemFormatacao,
-      categoria: req.body.categoria,
-      data: req.body.data,
-      urlVideo: req.body.urlVideo,
-      categoriaVideo: req.body.categoriaVideo,
-      idTransmissaoAoVivo: req.body.idTransmissaoAoVivo,
-      idUsuarioCriador: req.body.idUsuarioCriador
-    }
-  })
+  Publicacao.findByIdAndUpdate(req.params.id, {
+      $set: {
+        titulo: req.body.titulo,
+        slug: req.body.slug,
+        descricao: req.body.descricao,
+        texto: req.body.texto,
+        textoSemFormatacao: req.body.textoSemFormatacao,
+        categoria: req.body.categoria,
+        data: req.body.data,
+        urlVideo: req.body.urlVideo,
+        categoriaVideo: req.body.categoriaVideo,
+        idTransmissaoAoVivo: req.body.idTransmissaoAoVivo,
+        idUsuarioCriador: req.body.idUsuarioCriador
+      }
+    })
     .then(x => {
-      res.status(200).send({ message: 'Publicação atualizada com sucesso!' });
+      res.status(200).send({
+        message: 'Publicação atualizada com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({
@@ -79,9 +81,11 @@ exports.put = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    Publicacao.findByIdAndRemove(req.params.id)
+  Publicacao.findByIdAndRemove(req.params.id)
     .then(x => {
-      res.status(200).send({ message: 'Publicação removida com sucesso!' });
+      res.status(200).send({
+        message: 'Publicação removida com sucesso!'
+      });
     })
     .catch(e => {
       res.status(400).send({

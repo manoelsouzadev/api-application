@@ -13,3 +13,4 @@ router.delete('/:id', lembreteController.delete);
 router.get('/registros/count', lembreteController.getCount);
 
 module.exports = router;
+

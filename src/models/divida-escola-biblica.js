@@ -29,13 +29,13 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  valorPago: {
+  valorPago:{
     type: Number
   },
-  saldoDevedor: {
+  saldoDevedor:{
     type: Number
   },
-  troco: {
+  troco:{
     type: Number
   }
 });

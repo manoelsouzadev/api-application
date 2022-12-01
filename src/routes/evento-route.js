@@ -18,7 +18,7 @@ const router = express.Router();
  * @property {string} descricao.required
  * @property {string} urlImagem
  * @property {string} adicional
- */
+*/
 
 /**
  * Este endpoint cria um novo evento

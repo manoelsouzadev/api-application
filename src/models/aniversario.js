@@ -1,8 +1,6 @@
 'use strict';
 
-const {
-  Number
-} = require('mongoose');
+const { Number } = require('mongoose');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -17,7 +15,7 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  sexo: {
+  sexo:{
     type: Number,
     trim: true
   }

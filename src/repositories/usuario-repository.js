@@ -21,28 +21,26 @@ exports.getById = async id => {
   return await Usuario.findById(id);
 };
 
-exports.get = async (req, res, next) => {
+exports.get = async (req, res, next)  => {
   return await Usuario.find();
 };
 
 exports.put = async (id, data) => {
   Usuario.findByIdAndUpdate(id, {
-      $set: {
-        username: data.username,
-        password: data.password,
-        roles: data.roles,
-        membro: data.membro,
-        dataNascimento: data.dataNascimento,
-        nome: data.nome
-      }
-    })
+    $set: {
+      username: data.username,
+      password: data.password,
+      roles: data.roles,
+      membro: data.membro,
+      dataNascimento: data.dataNascimento,
+      nome: data.nome
+    }
+  })
     .then(x => {
-      res.status(200).send({
-        message: 'Usuário atualizado com sucesso!'
-      });
+      res.status(200).send({ message: 'Usuário atualizado com sucesso!' });
     })
     .catch(e => {
-
+      
       res.status(400).send({
         message: 'Falha ao atualizar a usuário',
         data: e
@@ -50,10 +48,10 @@ exports.put = async (id, data) => {
     });
 };
 
-exports.delete = async (id) => {
+exports.delete = async(id) => {
   await Usuario.findOneAndRemove(id);
 };
 
-exports.getCount = async (req, res) => {
+exports.getCount = async(req, res) => {
   return await Usuario.find({}).count();
 }

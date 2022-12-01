@@ -62,3 +62,4 @@ router.put('/:id', canalController.put);
 router.delete('/:id', canalController.delete);
 
 module.exports = router;
+

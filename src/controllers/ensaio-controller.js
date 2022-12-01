@@ -42,20 +42,18 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   Ensaio.findByIdAndUpdate(req.params.id, {
-      $set: {
-        titulo: req.body.titulo,
-        horarioInicio: req.body.horarioInicio,
-        horarioTermino: req.body.horarioTermino,
-        dia: req.body.dia,
-        descricao: req.body.descricao,
-        urlImagem: req.body.urlImagem,
-        adicional: req.body.adicional
-      }
-    })
+    $set: {
+      titulo: req.body.titulo,
+      horarioInicio: req.body.horarioInicio,
+      horarioTermino: req.body.horarioTermino,
+      dia: req.body.dia,
+      descricao: req.body.descricao,
+      urlImagem: req.body.urlImagem,
+      adicional: req.body.adicional
+    }
+  })
     .then(x => {
-      res.status(200).send({
-        message: 'Ensaio atualizado com sucesso!'
-      });
+      res.status(200).send({ message: 'Ensaio atualizado com sucesso!' });
     })
     .catch(e => {
       res.status(400).send({
@@ -68,9 +66,7 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
   Ensaio.findByIdAndRemove(req.params.id)
     .then(x => {
-      res.status(200).send({
-        message: 'Ensaio removido com sucesso!'
-      });
+      res.status(200).send({ message: 'Ensaio removido com sucesso!' });
     })
     .catch(e => {
       res.status(400).send({

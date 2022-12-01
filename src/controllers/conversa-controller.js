@@ -31,7 +31,7 @@ exports.post = async (req, res, next) => {
 };
 
 exports.getByIdRoom = async (req, res, next) => {
-  console.log("param", req.params.room)
+  console.log("param",req.params.room)
   try {
     const data = await repository.getByIdRoom(req.params.room);
     res.status(200).send(data);
@@ -45,9 +45,7 @@ exports.getByIdRoom = async (req, res, next) => {
 exports.put = async (req, res, next) => {
   try {
     await repository.put(req.params.id, req.body);
-    res.status(200).send({
-      message: "Conversa atualizada com sucesso!"
-    });
+    res.status(200).send({ message: "Conversa atualizada com sucesso!" });
   } catch (e) {
     console.log("e put", e)
     res.status(500).send({
@@ -59,9 +57,7 @@ exports.put = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
   try {
     await repository.delete(req.params.id);
-    res.status(200).send({
-      message: "Mensagem removida com sucesso!"
-    });
+    res.status(200).send({ message: "Mensagem removida com sucesso!" });
   } catch (e) {
     console.log(e)
     res.status(400).send({
@@ -70,3 +66,4 @@ exports.delete = async (req, res, next) => {
     });
   }
 };
+

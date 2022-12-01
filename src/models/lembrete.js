@@ -9,7 +9,7 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  titulo: {
+   titulo: {
     type: String,
     required: true,
     trim: true

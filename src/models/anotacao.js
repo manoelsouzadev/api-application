@@ -1,8 +1,6 @@
 'use strict';
 
-const {
-  Number
-} = require('mongoose');
+const { Number } = require('mongoose');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

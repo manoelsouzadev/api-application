@@ -5,7 +5,7 @@ const Oracao = mongoose.model('Oracao');
 
 exports.post = (req, res, next) => {
   var oracao = new Oracao(req.body);
-  oracao
+  oracao 
     .save()
     .then(() => {
       res.status(201).send({
@@ -42,20 +42,18 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   Oracao.findByIdAndUpdate(req.params.id, {
-      $set: {
-        titulo: req.body.titulo,
-        horarioInicio: req.body.horarioInicio,
-        horarioTermino: req.body.horarioTermino,
-        dia: req.body.dia,
-        descricao: req.body.descricao,
-        urlImagem: req.body.urlImagem,
-        adicional: req.body.adicional
-      }
-    })
+    $set: {
+      titulo: req.body.titulo,
+      horarioInicio: req.body.horarioInicio,
+      horarioTermino: req.body.horarioTermino,
+      dia: req.body.dia,
+      descricao: req.body.descricao,
+      urlImagem: req.body.urlImagem,
+      adicional: req.body.adicional
+    }
+  })
     .then(x => {
-      res.status(200).send({
-        message: 'Oração atualizada com sucesso!'
-      });
+      res.status(200).send({ message: 'Oração atualizada com sucesso!' });
     })
     .catch(e => {
       res.status(400).send({
@@ -68,9 +66,7 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
   Oracao.findByIdAndRemove(req.params.id)
     .then(x => {
-      res.status(200).send({
-        message: 'Oração removida com sucesso!'
-      });
+      res.status(200).send({ message: 'Oração removida com sucesso!' });
     })
     .catch(e => {
       res.status(400).send({

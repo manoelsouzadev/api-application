@@ -29,12 +29,12 @@ const schema = new Schema({
     required: true,
     trim: true
   },
-  urlImagem: {
+  urlImagem:{
     type: String,
     //required: true,
     trim: true
   },
-  adicional: {
+  adicional:{
     type: String,
     trim: true
   }

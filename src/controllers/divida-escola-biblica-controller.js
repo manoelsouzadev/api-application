@@ -17,7 +17,7 @@ exports.post = (req, res, next) => {
         message: "Falha ao cadastrar a dívida",
         data: e,
       });
-    });
+    }); 
 };
 
 exports.get = (req, res, next) => {
@@ -42,21 +42,19 @@ exports.getById = (req, res, next) => {
 
 exports.put = (req, res, next) => {
   DividaEscolaBiblica.findByIdAndUpdate(req.params.id, {
-      $set: {
-        nomeDevedor: req.body.nomeDevedor,
-        revista: req.body.revista,
-        previsaoPagamento: req.body.previsaoPagamento,
-        situacao: req.body.situacao,
-        valorDevido: req.body.valorDevido,
-        valorPago: req.body.valorPago,
-        saldoDevedor: req.body.saldoDevedor,
-        troco: req.body.troco
-      },
-    })
+    $set: {
+      nomeDevedor: req.body.nomeDevedor,
+      revista: req.body.revista,
+      previsaoPagamento: req.body.previsaoPagamento,
+      situacao: req.body.situacao,
+      valorDevido: req.body.valorDevido,
+      valorPago: req.body.valorPago,
+      saldoDevedor: req.body.saldoDevedor,
+      troco: req.body.troco
+    },
+  })
     .then((x) => {
-      res.status(200).send({
-        message: "Dívida atualizada com sucesso!"
-      });
+      res.status(200).send({ message: "Dívida atualizada com sucesso!" });
     })
     .catch((e) => {
       res.status(400).send({
@@ -69,9 +67,7 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
   DividaEscolaBiblica.findByIdAndRemove(req.params.id)
     .then((x) => {
-      res.status(200).send({
-        message: "Dívida removida com sucesso!"
-      });
+      res.status(200).send({ message: "Dívida removida com sucesso!" });
     })
     .catch((e) => {
       res.status(400).send({
@@ -86,13 +82,13 @@ exports.getCount = async (req, res) => {
 };
 
 exports.getValoresDevidosEscolaBiblica = (req, res, next) => {
-  DividaEscolaBiblica.find({}).select("valorDevido")
-    .then((data) => {
-      return res.status(200).send(data);
-    })
-    .catch((e) => {
-      return res.status(400).send(e);
-    });
+    DividaEscolaBiblica.find({ }).select("valorDevido")
+      .then((data) => {
+        return res.status(200).send(data);
+      })
+      .catch((e) => {
+        return res.status(400).send(e);
+      });
 
-
-};
+      
+  };

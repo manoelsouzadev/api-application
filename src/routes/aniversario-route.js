@@ -10,7 +10,7 @@ const router = express.Router();
  * @property {string} nomeAniversariante.required
  * @property {string} data.required - Descrição formato  - eg: 1996-05-26
  * @property {number} sexo - Descrição formato - eg: 1 ou 2 (1 - Masculino, 2 - Feminino)
- */
+*/
 
 /**
  * Este endpoint cria um novo aniversário

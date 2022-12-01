@@ -17,7 +17,9 @@ const expressSwagger = require('express-swagger-generator')(app);
 morganBody(app);
 
 const log = fs.createWriteStream(
-  path.join("./logs", `express${moment().format('YYYY-MM-DD')}.log`), { flags: "a" }
+  path.join("./logs", `express${moment().format('YYYY-MM-DD')}.log`), {
+    flags: "a"
+  }
 );
 
 log.on('error', function (err) {
@@ -30,29 +32,29 @@ morganBody(app, {
 });
 
 let options = {
-    swaggerDefinition: {
-        info: {
-            description: 'Este documentação é referente a api principal da api do aplicativo de igreja',
-            title: 'Swagger',
-            version: '1.0.0',
-        },
-        host: environment.PRODUCTION,
-        basePath: '/',
-        produces: [
-            "application/json",
-        ],
-        schemes: ['https', 'http'],
-        // securityDefinitions: {
-        //     JWT: {
-        //         type: 'apiKey',
-        //         in: 'header',
-        //         name: 'Authorization',
-        //         description: "",
-        //     }
-        // }
+  swaggerDefinition: {
+    info: {
+      description: 'Este documentação é referente a api principal da api do aplicativo de igreja',
+      title: 'Swagger',
+      version: '1.0.0',
     },
-    basedir: __dirname, //app absolute path
-    files: ['./routes/*.js'] //Path to the API handle folder
+    host: environment.PRODUCTION,
+    basePath: '/',
+    produces: [
+      "application/json",
+    ],
+    schemes: ['https', 'http'],
+    // securityDefinitions: {
+    //     JWT: {
+    //         type: 'apiKey',
+    //         in: 'header',
+    //         name: 'Authorization',
+    //         description: "",
+    //     }
+    // }
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./routes/*.js'] //Path to the API handle folder
 };
 
 //carrega models
@@ -94,14 +96,17 @@ const dashboardRoute = require('./routes/dashboard-route');
 const dividaRoute = require('./routes/divida-escola-biblica-route');
 const revistaRoute = require('./routes/revista-escola-biblica-route');
 
-mongoose.connect(   
+mongoose.connect(
   //db.mongoURI
-  process.env.MONGO_URL,
-  { useNewUrlParser: true } 
-  );
+  process.env.MONGO_URL, {
+    useNewUrlParser: true
+  }
+);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 const corsOptions = {
   origin: '*',
@@ -124,7 +129,7 @@ app.use('/canais', canalRoute);
 app.use('/usuarios', usuarioRoute);
 app.use('/anotacoes', anotacaoRoute);
 app.use('/conversas', conversaRoute);
-app.use("/pedidos-oracoes",pedidoOracaoRoute);
+app.use("/pedidos-oracoes", pedidoOracaoRoute);
 app.use("/uploads", uploadRoute);
 app.use("/dashboard", dashboardRoute);
 app.use("/dividas-ebd", dividaRoute);

@@ -31,6 +31,15 @@ router.post('/', anotacaoController.post);
 router.get('/', anotacaoController.get);
 
 /**
+ * Este endpoint busca todas as anotações realcionadas a um usuário específico
+ * @route GET /anotacoes/{id}
+ * @group anotacoes - Operações relacionadas as anotações
+ * @returns {Array.<Anotacao>} 200 - Um array de anotações
+ * @returns {Error}  default - Unexpected error
+ */
+ router.get('/usuario/:idUsuario', anotacaoController.getByIdUsuario);
+
+/**
  * Este endpoint busca uma anotação por id
  * @route GET /anotacoes/{id}
  * @group anotacoes - Operações relacionadas as anotações

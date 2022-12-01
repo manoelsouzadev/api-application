@@ -95,8 +95,8 @@ const dividaRoute = require('./routes/divida-escola-biblica-route');
 const revistaRoute = require('./routes/revista-escola-biblica-route');
 
 mongoose.connect(   
-  db.mongoURI
-  //process.env.MONGO_URL
+  //db.mongoURI
+  process.env.MONGO_URL
   );
 
 app.use(bodyParser.json());

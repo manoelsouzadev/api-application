@@ -40,6 +40,16 @@ exports.getById = (req, res, next) => {
         });
 };
 
+exports.getByIdUsuario = (req, res, next) => {
+    Anotacao.find({ idUsuario: req.params.idUsuario })
+        .then(data => {
+            res.status(200).send(data);
+        })
+        .catch(e => {
+            res.status(400).send(e);
+        });
+};
+
 exports.put = (req, res, next) => {
     Anotacao.findByIdAndUpdate(req.params.id, {
             $set: {

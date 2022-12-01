@@ -1,5 +1,5 @@
 if(process.env.NODE_ENV == "production"){
-	module.exports = { mongoURI: 'mongodb+srv://manoel:mongodbnosql@mongodb-akelj.mongodb.net/test?retryWrites=true&w=majority' }
+	module.exports = { mongoURI: '' }
 }else{
-  module.exports = { mongoURI: 'mongodb+srv://manoel:mongodbnosql@mongodb-akelj.mongodb.net/test?retryWrites=true&w=majority' }
+  module.exports = { mongoURI: '' }
 }

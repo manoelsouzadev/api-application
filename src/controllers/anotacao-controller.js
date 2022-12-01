@@ -40,7 +40,7 @@ exports.getById = (req, res, next) => {
         });
 };
 
-exports.getByIdUsuario = (req, res, next) => {
+exports.getByIdUsuario = (req, res) => {
     Anotacao.find({ idUsuario: req.params.idUsuario })
         .then(data => {
             res.status(200).send(data);

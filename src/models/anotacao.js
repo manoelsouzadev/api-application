@@ -10,7 +10,7 @@ const schema = new Schema({
     trim: true
   },
   idUsuario: {
-    type: Number,
+    type: String,
     required: true,
     trim: true
   }

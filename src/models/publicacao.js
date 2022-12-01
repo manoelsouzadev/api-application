@@ -25,8 +25,7 @@ const schema = new Schema({
   },
   categoria: {
     type: Schema.Types.ObjectId,
-    ref: "Publicacao",
-    required: true,
+    ref: "Publicacao"
   },
   data: {
     type: Date,
@@ -36,8 +35,7 @@ const schema = new Schema({
     type: String,
   },
   categoriaVideo: {
-    type: String,
-    required: true,
+    type: String
   },
   idTransmissaoAoVivo: {
     type: String,

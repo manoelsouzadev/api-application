@@ -95,12 +95,11 @@ const uploadRoute = require('./routes/upload-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const dividaRoute = require('./routes/divida-escola-biblica-route');
 const revistaRoute = require('./routes/revista-escola-biblica-route');
+const utilRoute = require('./routes/util-route');
 
 mongoose.connect(
   //db.mongoURI
-  process.env.MONGO_URL, {
-    useNewUrlParser: true
-  }
+  process.env.MONGO_URL
 );
 
 app.use(bodyParser.json());
@@ -134,6 +133,7 @@ app.use("/uploads", uploadRoute);
 app.use("/dashboard", dashboardRoute);
 app.use("/dividas-ebd", dividaRoute);
 app.use("/revistas-ebd", revistaRoute);
+app.use("/util", utilRoute);
 
 expressSwagger(options);
 

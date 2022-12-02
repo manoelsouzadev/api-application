@@ -98,8 +98,8 @@ const revistaRoute = require('./routes/revista-escola-biblica-route');
 const utilRoute = require('./routes/util-route');
 
 mongoose.connect(
-  //db.mongoURI
-  process.env.MONGO_URL
+  db.mongoURI
+  //process.env.MONGO_URL
 );
 
 app.use(bodyParser.json());
@@ -113,6 +113,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use(express.static('public'));
 
 app.use('/', indexRoute);
 app.use('/cultos', cultoRoute);

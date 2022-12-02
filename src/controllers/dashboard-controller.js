@@ -70,6 +70,8 @@ exports.getValoresDevidosEscolaBiblica = async (req, res) => {
 
 exports.getUsuariosPorMembro = async (req, res) => {
 
-  return await usuarioController.getByMembro(req, res);
+  const total =  await usuarioController.getByMembro(req, res);
+
+  await res.status(200).send({ label: req.params.membro == "1" ? "Membros" : "Não Membros", data: total });
 
 } 

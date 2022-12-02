@@ -99,7 +99,8 @@ const utilRoute = require('./routes/util-route');
 
 mongoose.connect(
   //db.mongoURI,
-  process.env.MONGO_URL
+  process.env.MONGO_URL,
+  { useNewUrlParser: true }
 );
 
 app.use(bodyParser.json());

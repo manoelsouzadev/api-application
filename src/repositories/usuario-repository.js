@@ -57,5 +57,5 @@ exports.getCount = async(req, res) => {
 }
 
 exports.getByMembro = async(req, res) => {
-  return await Usuario.find({ membro: req.params.membro }).count();
+  return await Usuario.find({ membro: req.params.membro == 1 ? true : false }).count();
 }

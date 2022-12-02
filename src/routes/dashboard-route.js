@@ -15,6 +15,6 @@ router.get('/escola-biblica/revistas/total', dashboardController.getCountRevista
 
 router.get('/escola-biblica/divida/count', dashboardController.getCountDividasEscolaBiblica);
 
-router.get('/usuarios/membro', dashboardController.getUsuariosPorMembro);
+router.get('/usuarios/membro/:membro', dashboardController.getUsuariosPorMembro);
 
 module.exports = router;

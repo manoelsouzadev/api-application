@@ -55,3 +55,7 @@ exports.delete = async(id) => {
 exports.getCount = async(req, res) => {
   return await Usuario.find({}).count();
 }
+
+exports.getByMembro = async(req, res) => {
+  return await Usuario.find({ membro: req.params.membro }).count();
+}

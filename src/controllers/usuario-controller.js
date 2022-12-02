@@ -187,3 +187,7 @@ exports.verifyToken = async (req, res, next) => {
 exports.getCount = async (req, res) => {
   return await repository.getCount(req, res); 
 };
+
+exports.getByMembro = async (req, res) => {
+  return await repository.getByMembro(req, res); 
+};

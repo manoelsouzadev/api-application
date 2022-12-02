@@ -67,3 +67,9 @@ exports.getValoresDevidosEscolaBiblica = async (req, res) => {
   return await dividaEscolaBiblicaController.getValoresDevidosEscolaBiblica(req, res);
 
 }
+
+exports.getUsuariosPorMembro = async (req, res) => {
+
+  return await usuarioController.getUsuariosPorMembro(req, res);
+
+}

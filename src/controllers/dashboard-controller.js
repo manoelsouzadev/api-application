@@ -64,6 +64,6 @@ exports.getCountRevistasEscolaBiblica = async (req, res) => {
 
 exports.getValoresDevidosEscolaBiblica = async (req, res) => {
 
-  return await revistaEscolaBiblicaController.getValoresDevidos(req, res);
+  return await dividaEscolaBiblicaController.getValoresDevidosEscolaBiblica(req, res);
 
 }

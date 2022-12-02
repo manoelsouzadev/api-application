@@ -72,4 +72,4 @@ exports.getUsuariosPorMembro = async (req, res) => {
 
   return await usuarioController.getByMembro(req, res);
 
-}
+} 

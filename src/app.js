@@ -98,8 +98,8 @@ const revistaRoute = require('./routes/revista-escola-biblica-route');
 const utilRoute = require('./routes/util-route');
 
 mongoose.connect(
-  //db.mongoURI,
-  process.env.MONGO_URL,
+  db.mongoURI,
+  //process.env.MONGO_URL,
   { useNewUrlParser: true }
 );
 

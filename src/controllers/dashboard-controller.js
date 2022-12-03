@@ -75,3 +75,11 @@ exports.getUsuariosPorMembro = async (req, res) => {
   await res.status(200).send({ label: req.params.membro == "1" ? "Membros" : "Não Membros", data: total });
 
 } 
+
+exports.getUsuariosPorNivelAcesso = async (req, res) => {
+
+  const total =  await usuarioController.getByNivelAcesso(req, res);
+console.log(req.body)
+  await res.status(200).send({ label: req.body.role == "admin" ? "Administradores" : req.body.role == "usuario_interno" ? "Usuários Internos" :  "Usuários Externos", data: total });
+
+} 

@@ -191,3 +191,7 @@ exports.getCount = async (req, res) => {
 exports.getByMembro = async (req, res) => {
   return await repository.getByMembro(req, res); 
 };
+
+exports.getByNivelAcesso = async (req, res) => {
+  return await repository.getByNivelAcesso(req, res); 
+};

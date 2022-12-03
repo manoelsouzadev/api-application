@@ -15,5 +15,6 @@ router.put('/:id', usuarioController.put);
 router.delete('/:id', usuarioController.delete);
 router.get('/registros/count', usuarioController.getCount);
 router.get('/registros/membros', usuarioController.getByMembro);
+router.get('/registros/niveis-acesso/membros/count', usuarioController.getByNivelAcesso);
 
 module.exports = router;

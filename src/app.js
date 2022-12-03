@@ -74,6 +74,7 @@ const Mensagem = require('./models/mensagem');
 const PedidoOracao = require('./models/pedido-oracao');
 const DividaEscolaBiblica = require('./models/divida-escola-biblica');
 const revistaEscolaBiblica = require('./models/revista-escola-biblica');
+const notificacao = require('./models/notificacao');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
@@ -96,10 +97,11 @@ const dashboardRoute = require('./routes/dashboard-route');
 const dividaRoute = require('./routes/divida-escola-biblica-route');
 const revistaRoute = require('./routes/revista-escola-biblica-route');
 const utilRoute = require('./routes/util-route');
+const NotificacaoRoute = require('./routes/notificacao-route');
 
 mongoose.connect(
-  //db.mongoURI,
-  process.env.MONGO_URL,
+  db.mongoURI,
+  //process.env.MONGO_URL,
   { useNewUrlParser: true }
 );
 
@@ -137,6 +139,7 @@ app.use("/dashboard", dashboardRoute);
 app.use("/dividas-ebd", dividaRoute);
 app.use("/revistas-ebd", revistaRoute);
 app.use("/util", utilRoute);
+app.use("/notificacoes", NotificacaoRoute);
 
 expressSwagger(options);
 

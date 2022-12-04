@@ -21,7 +21,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    Notificacao.find()
+    Notificacao.find().sort({data: 'desc'})
     .then(data => {
       res.status(200).send(data);
     })

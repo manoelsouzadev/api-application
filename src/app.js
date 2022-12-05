@@ -14,7 +14,7 @@ const path = require('path');
 const config = require('../config');
 const expressSwagger = require('express-swagger-generator')(app);
 
-morganBody(app);
+
 
 const log = fs.createWriteStream(
   path.join("./logs", `express${moment().format('YYYY-MM-DD')}.log`), {
@@ -26,9 +26,10 @@ log.on('error', function (err) {
   console.log("erro");
 });
 
-morganBody(app, {
+morganBody(app,{
   noColors: true,
   stream: log,
+  skip: function (req, res) { return req.url === "/push"}
 });
 
 let options = {

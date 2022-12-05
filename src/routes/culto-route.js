@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cultoController = require('../controllers/culto-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', cultoController.post);
+router.post('/', authService.authorize, cultoController.post);
 
 /**
  * Este endpoint busca todos os cultos
@@ -33,7 +34,7 @@ router.post('/', cultoController.post);
  * @returns {Array.<Culto>} 200 - Um array de cultos
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', cultoController.get);
+router.get('/', authService.authorize, cultoController.get);
 
 /**
  * Este endpoint busca um culto por id
@@ -43,7 +44,7 @@ router.get('/', cultoController.get);
  * @returns {Object} 200 - Um model de culto
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', cultoController.getById);
+router.get('/:id', authService.authorize, cultoController.getById);
 
 /**
  * Este endpoint altera um culto
@@ -54,7 +55,7 @@ router.get('/:id', cultoController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', cultoController.put);
+router.put('/:id', authService.authorize, cultoController.put);
 
 /**
  * Este endpoint deleta um culto
@@ -64,9 +65,9 @@ router.put('/:id', cultoController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', cultoController.delete);
+router.delete('/:id', authService.authorize, cultoController.delete);
 
-router.get('/registros/count', cultoController.getCount);
+router.get('/registros/count', authService.authorize, cultoController.getCount);
 
 module.exports = router;
 

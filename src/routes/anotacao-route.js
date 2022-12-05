@@ -2,6 +2,7 @@
 
 const express = require('express');
 const anotacaoController = require('../controllers/anotacao-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', anotacaoController.post);
+router.post('/', authService.authorize, anotacaoController.post);
 
 /**
  * Este endpoint busca todas as anotações
@@ -28,7 +29,7 @@ router.post('/', anotacaoController.post);
  * @returns {Array.<Anotacao>} 200 - Um array de anotações
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', anotacaoController.get);
+router.get('/', authService.authorize, anotacaoController.get);
 
 /**
  * Este endpoint busca todas as anotações realcionadas a um usuário específico
@@ -37,7 +38,7 @@ router.get('/', anotacaoController.get);
  * @returns {Array.<Anotacao>} 200 - Um array de anotações
  * @returns {Error}  default - Unexpected error
  */
- router.get('/usuario/:idUsuario', anotacaoController.getByIdUsuario);
+ router.get('/usuario/:idUsuario', authService.authorize, anotacaoController.getByIdUsuario);
 
 /**
  * Este endpoint busca uma anotação por id
@@ -47,7 +48,7 @@ router.get('/', anotacaoController.get);
  * @returns {Object} 200 - Um model de anotação
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', anotacaoController.getById);
+router.get('/:id', authService.authorize, anotacaoController.getById);
 
 /**
  * Este endpoint altera uma anotação
@@ -58,7 +59,7 @@ router.get('/:id', anotacaoController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', anotacaoController.put);
+router.put('/:id', authService.authorize, anotacaoController.put);
 
 /**
  * Este endpoint deleta uma anotação
@@ -68,6 +69,6 @@ router.put('/:id', anotacaoController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', anotacaoController.delete);
+router.delete('/:id', authService.authorize, anotacaoController.delete);
 
 module.exports = router;

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const canalController = require('../controllers/canal-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', canalController.post);
+router.post('/', authService.authorize, canalController.post);
 
 /**
  * Este endpoint busca todos os canais
@@ -28,7 +29,7 @@ router.post('/', canalController.post);
  * @returns {Array.<Canal>} 200 - Um array de canais
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', canalController.get);
+router.get('/', authService.authorize, canalController.get);
 
 /**
  * Este endpoint busca um canal por id
@@ -38,7 +39,7 @@ router.get('/', canalController.get);
  * @returns {Object} 200 - Um model de canal
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', canalController.getById);
+router.get('/:id', authService.authorize, canalController.getById);
 
 /**
  * Este endpoint altera um canal
@@ -49,7 +50,7 @@ router.get('/:id', canalController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', canalController.put);
+router.put('/:id', authService.authorize, canalController.put);
 
 /**
  * Este endpoint deleta um canal
@@ -59,7 +60,7 @@ router.put('/:id', canalController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', canalController.delete);
+router.delete('/:id', authService.authorize, canalController.delete);
 
 module.exports = router;
 

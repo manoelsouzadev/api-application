@@ -2,6 +2,7 @@
 
 const express = require('express');
 const campanhaController = require('../controllers/campanha-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -26,7 +27,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', campanhaController.post);
+router.post('/', authService.authorize, campanhaController.post);
 
 /**
  * Este endpoint busca todas as campanhas
@@ -35,7 +36,7 @@ router.post('/', campanhaController.post);
  * @returns {Array.<Campanha>} 200 - Um array de campanhas
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', campanhaController.get);
+router.get('/', authService.authorize, campanhaController.get);
 
 /**
  * Este endpoint busca uma campanha por id
@@ -45,7 +46,7 @@ router.get('/', campanhaController.get);
  * @returns {Object} 200 - Um model de campanha
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', campanhaController.getById);
+router.get('/:id', authService.authorize, campanhaController.getById);
 
 /**
  * Este endpoint altera uma campanha
@@ -56,7 +57,7 @@ router.get('/:id', campanhaController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', campanhaController.put);
+router.put('/:id', authService.authorize, campanhaController.put);
 
 /**
  * Este endpoint deleta uma campanha
@@ -66,8 +67,8 @@ router.put('/:id', campanhaController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', campanhaController.delete);
+router.delete('/:id', authService.authorize, campanhaController.delete);
 
-router.get('/registros/count', campanhaController.getCount);
+router.get('/registros/count', authService.authorize, campanhaController.getCount);
 
 module.exports = router;

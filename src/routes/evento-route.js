@@ -2,6 +2,7 @@
 
 const express = require('express');
 const eventoController = require('../controllers/evento-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -28,12 +29,12 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', eventoController.post);
-router.get('/', eventoController.get);
-router.get('/:id', eventoController.getById);
-router.get('/tipo/:tipo', eventoController.getByEventType);
-router.put('/:id', eventoController.put);
-router.delete('/:id', eventoController.delete);
-router.get('/registros/count', eventoController.getCount);
+router.post('/', authService.authorize, eventoController.post);
+router.get('/', authService.authorize, eventoController.get);
+router.get('/:id', authService.authorize, eventoController.getById);
+router.get('/tipo/:tipo', authService.authorize, eventoController.getByEventType);
+router.put('/:id', authService.authorize, eventoController.put);
+router.delete('/:id', authService.authorize, eventoController.delete);
+router.get('/registros/count', authService.authorize, eventoController.getCount);
 
 module.exports = router;

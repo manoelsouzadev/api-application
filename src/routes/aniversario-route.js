@@ -2,6 +2,7 @@
 
 const express = require('express');
 const aniversarioController = require('../controllers/aniversario-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', aniversarioController.post);
+router.post('/', authService.authorize, aniversarioController.post);
 
 /**
  * Este endpoint busca todos os aniversários
@@ -29,7 +30,7 @@ router.post('/', aniversarioController.post);
  * @returns {Array.<Aniversario>} 200 - Um array de aniversários
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', aniversarioController.get);
+router.get('/', authService.authorize, aniversarioController.get);
 
 /**
  * Este endpoint busca um aniversário por id
@@ -39,7 +40,7 @@ router.get('/', aniversarioController.get);
  * @returns {Object} 200 - Um model de aniversário
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', aniversarioController.getById);
+router.get('/:id', authService.authorize, aniversarioController.getById);
 
 /**
  * Este endpoint altera um aniversário
@@ -50,7 +51,7 @@ router.get('/:id', aniversarioController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', aniversarioController.put);
+router.put('/:id', authService.authorize, aniversarioController.put);
 
 /**
  * Este endpoint deleta um aniversário
@@ -60,8 +61,8 @@ router.put('/:id', aniversarioController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', aniversarioController.delete);
+router.delete('/:id', authService.authorize, aniversarioController.delete);
 
-router.get('/registros/count', aniversarioController.getCount);
+router.get('/registros/count', authService.authorize, aniversarioController.getCount);
 
 module.exports = router;

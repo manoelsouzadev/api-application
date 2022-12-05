@@ -2,6 +2,7 @@
 
 const express = require('express');
 const categoriaController = require('../controllers/categoria-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', categoriaController.post);
+router.post('/', authService.authorize, categoriaController.post);
 
 /**
  * Este endpoint busca todos as categorias
@@ -29,7 +30,7 @@ router.post('/', categoriaController.post);
  * @returns {Array.<Categoria>} 200 - Um array de categorias
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', categoriaController.get);
+router.get('/', authService.authorize, categoriaController.get);
 
 /**
  * Este endpoint busca uma categoria por id
@@ -39,7 +40,7 @@ router.get('/', categoriaController.get);
  * @returns {Object} 200 - Um model de categoria
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', categoriaController.getById);
+router.get('/:id', authService.authorize, categoriaController.getById);
 
 /**
  * Este endpoint altera uma categoria
@@ -50,7 +51,7 @@ router.get('/:id', categoriaController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', categoriaController.put);
+router.put('/:id', authService.authorize, categoriaController.put);
 
 /**
  * Este endpoint deleta uma categoria
@@ -60,6 +61,6 @@ router.put('/:id', categoriaController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', categoriaController.delete);
+router.delete('/:id', authService.authorize, categoriaController.delete);
 
 module.exports = router;

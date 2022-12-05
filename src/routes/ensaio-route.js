@@ -2,6 +2,7 @@
 
 const express = require('express');
 const ensaioController = require('../controllers/ensaio-controller');
+const authService = require("../services/auth-service");
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ const router = express.Router();
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.post('/', ensaioController.post);
+router.post('/', authService.authorize, ensaioController.post);
 
 /**
  * Este endpoint busca todos os ensaios
@@ -33,7 +34,7 @@ router.post('/', ensaioController.post);
  * @returns {Array.<Ensaio>} 200 - Um array de ensaios
  * @returns {Error}  default - Unexpected error
  */
-router.get('/', ensaioController.get);
+router.get('/', authService.authorize, ensaioController.get);
 
 /**
  * Este endpoint busca um ensaio por id
@@ -43,7 +44,7 @@ router.get('/', ensaioController.get);
  * @returns {Object} 200 - Um model de ensaio
  * @returns {Error}  default - Unexpected error
  */
-router.get('/:id', ensaioController.getById);
+router.get('/:id', authService.authorize, ensaioController.getById);
 
 /**
  * Este endpoint altera um ensaio
@@ -54,7 +55,7 @@ router.get('/:id', ensaioController.getById);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.put('/:id', ensaioController.put);
+router.put('/:id', authService.authorize, ensaioController.put);
 
 /**
  * Este endpoint deleta um ensaio
@@ -64,9 +65,9 @@ router.put('/:id', ensaioController.put);
  * @returns {Object} 200
  * @returns {Error}  default - Unexpected error
  */
-router.delete('/:id', ensaioController.delete);
+router.delete('/:id', authService.authorize, ensaioController.delete);
 
-router.get('/registros/count', ensaioController.getCount);
+router.get('/registros/count', authService.authorize, ensaioController.getCount);
 
 module.exports = router;
 

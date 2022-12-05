@@ -101,8 +101,8 @@ const utilRoute = require('./routes/util-route');
 const NotificacaoRoute = require('./routes/notificacao-route');
 
 mongoose.connect(
-  db.mongoURI,
-  //process.env.MONGO_URL,
+  //db.mongoURI,
+  process.env.MONGO_URL,
   { useNewUrlParser: true }
 );
 
